@@ -20,7 +20,26 @@ It has two columns instead of the "classic menu" and was inspired by Xfce's [Whi
 
 ![Icons](screenshots/icons.png "Icons")
 
-## Install:
+## Installation:
+
+### Dependencies:
+
+#### Lubuntu (22.04)
+
+```
+sudo apt install git build-essential cmake qttools5-dev \
+liblxqt0-dev libkf5windowsystem-dev libqt5x11extras5-dev \
+liblxqt-globalkeys-ui0-dev liblxqt-globalkeys0-dev
+```
+
+#### Arch Linux
+
+```
+sudo pacman --needed -S git base-devel cmake liblxqt \
+lxqt-build-toolsqt5-base kwindowsystem qt5-x11extras
+```
+
+### Compile and install plugin:
 
 ```bash
 # clone repo
@@ -34,6 +53,6 @@ bash install.sh
 
 ```
 
-#### Note: it's not well integrated with LXQt Themes, use it with "System" theme.
+#### Note: it's not well integrated with LXQt Themes, try it with "System" theme.
 
-If everything was successful you should have a new plugin ready to be added to your panel, named `Wing Menu (wingmenu)`.
+If everything was successful, you should have a new plugin ready to be added to your panel, named `Wing Menu (wingmenu)`.
