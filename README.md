@@ -32,10 +32,6 @@ cd plugin-wingmenu
 # run install script
 bash install.sh
 
-# run lxqt-config session to stop/start panel
-# to reload the list of plugins.
-lxqt-config-session
-
 ```
 
 #### Note: it's not well integrated with LXQt Themes, use it with "System" theme.
