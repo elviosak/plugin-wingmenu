@@ -16,6 +16,7 @@
 #include <XmlHelper>
 
 #define BTNMULTIPLIER 1.2
+#define DEFAULT_MENU_FILE "/etc/xdg/menus/lxqt-applications.menu"
 
 // Default menu layout cause i couldn't come up with
 // sufficiently descriptive names
@@ -58,7 +59,7 @@ WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, QWidget* parent)
     auto logDir = mPlugin->settings()->value(QSL("logDir"), QString()).toString();
     mXdgMenu.setEnvironments(QStringList() << QSL("X-LXQT") << QSL("LXQt"));
     mXdgMenu.setLogDir(logDir);
-    mMenuFile = mPlugin->settings()->value(QSL("menuFile"), QString()).toString();
+    mMenuFile = mPlugin->settings()->value(QSL("menuFile"), QSL(DEFAULT_MENU_FILE)).toString();
     bool res = mXdgMenu.read(mMenuFile);
     if (!res)
         QMessageBox::warning(nullptr, QSL("Parse error"), mXdgMenu.errorString());
@@ -115,6 +116,36 @@ WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, QWidget* parent)
 
     focusLineEdit();
     mSideWidget->installEventFilter(this);
+}
+
+void WingMenuWidget::onShow()
+{
+    if (mFavoritesList.count() == 0) {
+        if (QAction* a = mCategoryGroup->actions().at(1))
+            if (!a->isChecked())
+                a->trigger();
+    }
+    else if (QAction* a = mCategoryGroup->actions().at(0)) {
+        if (!a->isChecked())
+            a->trigger();
+    }
+}
+
+void WingMenuWidget::onHide()
+{
+    uncheckSideActions();
+    mSearchEdit->setText(QString());
+}
+
+void WingMenuWidget::indexActivated(const QModelIndex& index)
+{
+    if (!index.isValid())
+        return;
+    XdgDesktopFile df;
+    df.load(index.data(DataType::DesktopFile).toString());
+    if (df.isValid())
+        df.startDetached();
+    emit hideMenu();
 }
 
 bool WingMenuWidget::eventFilter(QObject* watched, QEvent* event)
@@ -352,37 +383,6 @@ void WingMenuWidget::sendKeyToApplicationsList(Qt::Key key) {
         }
         current->setFocus();
     }
-}
-
-
-void WingMenuWidget::onShow()
-{
-    if (mFavoritesList.count() == 0) {
-        if (QAction* a = mCategoryGroup->actions().at(1))
-            if (!a->isChecked())
-                a->trigger();
-    }
-    else if (QAction* a = mCategoryGroup->actions().at(0)) {
-        if (!a->isChecked())
-            a->trigger();
-    }
-}
-
-void WingMenuWidget::onHide()
-{
-    uncheckSideActions();
-    mSearchEdit->setText(QString());
-}
-
-void WingMenuWidget::indexActivated(const QModelIndex& index)
-{
-    if (!index.isValid())
-        return;
-    XdgDesktopFile df;
-    df.load(index.data(DataType::DesktopFile).toString());
-    if (df.isValid())
-        df.startDetached();
-    emit hideMenu();
 }
 
 void WingMenuWidget::showCustomMenu(const QPoint& pos)
@@ -714,7 +714,7 @@ void WingMenuWidget::settingsChanged()
     if (mFavoritesList.isEmpty())
         mFavoritesList = (mPlugin->settings()->value(QSL("favoritesList"), {})).toStringList();
 
-    auto menuFile = mPlugin->settings()->value(QSL("menuFile"), QString()).toString();
+    auto menuFile = mPlugin->settings()->value(QSL("menuFile"), QSL(DEFAULT_MENU_FILE)).toString();
     mCategoryLeft = mPlugin->settings()->value(QSL("categoryLeft"), true).toBool();
     mSearchBottom = mPlugin->settings()->value(QSL("searchBottom"), true).toBool();
     mSidebarLeft = mPlugin->settings()->value(QSL("sidebarLeft"), true).toBool();
