@@ -12,8 +12,8 @@
 #include <QToolButton>
 #include <QWidget>
 #include <QWidgetAction>
-
 #include <QKeyEvent>
+#include <XdgMenu>
 
 namespace GlobalKeyShortcut
 {
@@ -53,6 +53,8 @@ private:
     WingMenuWidget* mMenuWidget;
     QWidgetAction* mMenuAction;
     AppLayout::Layout mAppLayout;
+    QString mMenuFile;
+    XdgMenu* mXdgMenu;
 
     bool mShowIcon;
     QString mIcon;

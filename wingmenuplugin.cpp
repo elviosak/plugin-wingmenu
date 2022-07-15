@@ -17,8 +17,13 @@ WingMenuPlugin::WingMenuPlugin(const ILXQtPanelPluginStartupInfo& startupInfo)
     mShortcut(nullptr),
     mMenu(nullptr),
     mMenuWidget(nullptr),
-    mMenuAction(nullptr)
+    mMenuAction(nullptr),
+    mMenuFile(QString()),
+    mXdgMenu(new XdgMenu())
 {
+    auto logDir = settings()->value(QSL("logDir"), QString()).toString();
+    mXdgMenu->setEnvironments(QStringList() << QSL("X-LXQT") << QSL("LXQt"));
+    mXdgMenu->setLogDir(logDir);
     mWidget = new QToolButton;
     mWidget->setObjectName(QSL("MainMenu"));
     mWidget->setAutoRaise(true);
@@ -29,6 +34,7 @@ WingMenuPlugin::WingMenuPlugin(const ILXQtPanelPluginStartupInfo& startupInfo)
     settingsChanged();
     // buildMenu();
     setupShortcut();
+    connect(mXdgMenu, &XdgMenu::changed, this, &WingMenuPlugin::buildMenu);
 }
 
 WingMenuPlugin::~WingMenuPlugin() = default;
@@ -44,7 +50,7 @@ void WingMenuPlugin::buildMenu()
     mMenu = new QMenu(mWidget);
     mMenu->setAttribute(Qt::WA_AlwaysShowToolTips);
     mMenu->setAttribute(Qt::WA_TranslucentBackground);
-    mMenuWidget = new WingMenuWidget(this);
+    mMenuWidget = new WingMenuWidget(this, mXdgMenu);
     mMenuWidget->ensurePolished();
 
     mMenu->setFocusProxy(mMenuWidget);
@@ -56,6 +62,7 @@ void WingMenuPlugin::buildMenu()
     connect(mMenuWidget, &WingMenuWidget::hideMenu, this, &WingMenuPlugin::hideMenu);
     connect(mMenu, &QMenu::aboutToHide, mMenuWidget, &WingMenuWidget::onHide);
     connect(mMenu, &QMenu::aboutToShow, mMenuWidget, &WingMenuWidget::onShow);
+
 }
 
 void WingMenuPlugin::settingsChanged()
@@ -65,6 +72,7 @@ void WingMenuPlugin::settingsChanged()
     mShowText = settings()->value(QSL("showText"), true).toBool();
     mText = settings()->value(QSL("text"), tr("Menu")).toString();
     auto appLayout = settings()->value(QSL("appLayout"), AppLayout::ListNameAndDescription).value<AppLayout::Layout>();
+    auto menuFile = settings()->value(QSL("menuFile"), DEFAULT_MENU_FILE).toString();
 
     if (!mShowIcon && !mShowText) {
         mWidget->setIcon(QIcon());
@@ -90,8 +98,14 @@ void WingMenuPlugin::settingsChanged()
             mWidget->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextOnly);
         }
     }
-    if (mAppLayout != appLayout) {
+
+
+    if ((mAppLayout != appLayout) || (mMenuFile != menuFile)) {
         mAppLayout = appLayout;
+        mMenuFile = menuFile;
+        bool res = mXdgMenu->read(mMenuFile);
+        if (!res)
+            QMessageBox::warning(nullptr, QSL("Parse error"), mXdgMenu->errorString());
         buildMenu();
     }
     mMenuWidget->settingsChanged();

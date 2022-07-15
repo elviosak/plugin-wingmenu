@@ -16,7 +16,7 @@
 #include <XmlHelper>
 
 #define BTNMULTIPLIER 1.2
-#define DEFAULT_MENU_FILE "/etc/xdg/menus/lxqt-applications.menu"
+
 
 // Default menu layout cause i couldn't come up with
 // sufficiently descriptive names
@@ -41,7 +41,7 @@
 // |_________________________________________________|                                           
 //                                            
 
-WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, QWidget* parent)
+WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, XdgMenu* xdgMenu, QWidget* parent)
     : QWidget(parent),
     mPlugin(plugin),
     mIconSize(mPlugin->panel()->iconSize()),
@@ -54,15 +54,14 @@ WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, QWidget* parent)
     mCategoryWidget(new QWidget(this)),
     mCategoryBox(new QVBoxLayout(mCategoryWidget)),
     mApplicationsStack(new QStackedWidget(this)),
-    mHoverTimer(new QTimer(this)), mHoveredAction(nullptr)
+    mHoverTimer(new QTimer(this)), mHoveredAction(nullptr),
+    mXdgMenu(xdgMenu)
 {
-    auto logDir = mPlugin->settings()->value(QSL("logDir"), QString()).toString();
-    mXdgMenu.setEnvironments(QStringList() << QSL("X-LXQT") << QSL("LXQt"));
-    mXdgMenu.setLogDir(logDir);
-    mMenuFile = mPlugin->settings()->value(QSL("menuFile"), QSL(DEFAULT_MENU_FILE)).toString();
-    bool res = mXdgMenu.read(mMenuFile);
-    if (!res)
-        QMessageBox::warning(nullptr, QSL("Parse error"), mXdgMenu.errorString());
+
+    // mMenuFile = mPlugin->settings()->value(QSL("menuFile"), DEFAULT_MENU_FILE).toString();
+    // bool res = mXdgMenu.read(mMenuFile);
+    // if (!res)
+    //     QMessageBox::warning(nullptr, QSL("Parse error"), mXdgMenu.errorString());
 
     auto appLayout = mPlugin->settings()->value(QSL("appLayout"), AppLayout::ListNameAndDescription).value<AppLayout::Layout>();
     mApplicationsView = new ApplicationsView(mPlugin->panel()->iconSize(), appLayout, mApplicationsStack);
@@ -504,7 +503,7 @@ void WingMenuWidget::buildMenu()
     // Categories and Sidebar
     mSideSpacer = new QSpacerItem(1, 1, QSizePolicy::Preferred, QSizePolicy::Expanding);
     mSideBox->addSpacerItem(mSideSpacer);
-    mXml = mXdgMenu.xml().documentElement();
+    mXml = mXdgMenu->xml().documentElement();
     DomElementIterator it(mXml, QString());
     while (it.hasNext()) {
         QDomElement xmlItem = it.next();
@@ -523,9 +522,6 @@ void WingMenuWidget::buildMenu()
 
 void WingMenuWidget::connectSignals()
 {
-    connect(&mXdgMenu, &XdgMenu::changed, this, [=] {
-        mPlugin->buildMenu();
-        });
     connect(mSearchEdit, &QLineEdit::textChanged, this, [this](const QString& text) {
         filterApplications(DataType::SearchString, text);
         });
@@ -714,7 +710,7 @@ void WingMenuWidget::settingsChanged()
     if (mFavoritesList.isEmpty())
         mFavoritesList = (mPlugin->settings()->value(QSL("favoritesList"), {})).toStringList();
 
-    auto menuFile = mPlugin->settings()->value(QSL("menuFile"), QSL(DEFAULT_MENU_FILE)).toString();
+
     mCategoryLeft = mPlugin->settings()->value(QSL("categoryLeft"), true).toBool();
     mSearchBottom = mPlugin->settings()->value(QSL("searchBottom"), true).toBool();
     mSidebarLeft = mPlugin->settings()->value(QSL("sidebarLeft"), true).toBool();
@@ -754,15 +750,6 @@ void WingMenuWidget::settingsChanged()
     else
         mSideBox->setDirection(QBoxLayout::TopToBottom);
 
-
-    if (mMenuFile != menuFile) {
-        mMenuFile = menuFile;
-        bool res = mXdgMenu.read(mMenuFile);
-
-        if (!res)
-            QMessageBox::warning(nullptr, QSL("Parse error"), mXdgMenu.errorString());
-        QTimer::singleShot(100, mPlugin, &WingMenuPlugin::buildMenu);
-    }
 }
 
 void WingMenuWidget::focusLineEdit()

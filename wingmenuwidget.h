@@ -41,7 +41,7 @@ public:
     };
     Q_ENUM(DataType);
 
-    WingMenuWidget(WingMenuPlugin* plugin, QWidget* parent = nullptr);
+    WingMenuWidget(WingMenuPlugin* plugin, XdgMenu* xdgMenu, QWidget* parent = nullptr);
     ~WingMenuWidget() = default;
 
     void onShow();
@@ -86,7 +86,7 @@ private:
     bool mAskFavoriteRemove;
     bool mSwitchOnHover;
     int mHoverDelay;
-    XdgMenu mXdgMenu;
+    XdgMenu* mXdgMenu;
     QDomElement mXml;
     QString mLogDir;
     QString mMenuFile;
