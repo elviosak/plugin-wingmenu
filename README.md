@@ -36,7 +36,7 @@ liblxqt-globalkeys-ui0-dev liblxqt-globalkeys0-dev
 
 ```
 sudo pacman --needed -S git base-devel cmake liblxqt \
-lxqt-build-toolsqt5-base kwindowsystem qt5-x11extras
+lxqt-build-tools qt5-base kwindowsystem qt5-x11extras
 ```
 
 ### Compile and install plugin:
