@@ -18,27 +18,26 @@
 #define BTNMULTIPLIER 1.2
 
 
-// Default menu layout cause i couldn't come up with
-// sufficiently descriptive names
-//  _________________________________________________                                            
-// |           WingMenuWidget - RootBox              |         
-// |  ______   ____________________________________  |                                       
-// | |      | |                MainBox             | |
-// | |      | |  ________________________________  | |                                        
-// | |      | | |              MenuBox           | | |       
-// | |      | | |  ______________   ___________  | | |                        
-// | |Leave | | | |              | |           | | | |      
-// | |Widget| | | |CategoryWidget| |           | | | |      
-// | |  -   | | | |      -       | |StackWidget| | | |           
-// | |Leave | | | |  CategoryBox | |           | | | |     
-// | | Box  | | | |              | |           | | | |          
-// | |      | | | |______________| |___________| | | |                               
-// | |      | | |________________________________| | |                             
-// | |      | |  ________________________________  | |                            
-// | |      | | |            SearchEdit          | | |                                        
-// | |      | | |________________________________| | |
-// | |______| |____________________________________| |                                     
-// |_________________________________________________|                                           
+// Widget/Layout variable names for Default menu layout
+//  _______________________________________________________                                            
+// |                WingMenuWidget - RootBox               |         
+// |  ______   __________________________________________  |                                       
+// | |      | |                MainBox                   | |
+// | |      | |  ______________________________________  | |                                        
+// | |      | | |              MenuBox                 | | |       
+// | |      | | |  ______________   _________________  | | |                        
+// | | Side | | | |              | |                 | | | |      
+// | |Widget| | | |CategoryWidget| |                 | | | |      
+// | |  -   | | | |      -       | |ApplicationsStack| | | |           
+// | | Side | | | |  CategoryBox | |                 | | | |     
+// | | Box  | | | |              | |                 | | | |          
+// | |      | | | |______________| |_________________| | | |                               
+// | |      | | |______________________________________| | |                             
+// | |      | |  ______________________________________  | |                            
+// | |      | | |             SearchEdit               | | |                                        
+// | |      | | |______________________________________| | |
+// | |______| |__________________________________________| |                                     
+// |_______________________________________________________|                                           
 //                                            
 
 WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, XdgMenu* xdgMenu, QWidget* parent)
@@ -57,12 +56,6 @@ WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, XdgMenu* xdgMenu, QWidget
     mHoverTimer(new QTimer(this)), mHoveredAction(nullptr),
     mXdgMenu(xdgMenu)
 {
-
-    // mMenuFile = mPlugin->settings()->value(QSL("menuFile"), DEFAULT_MENU_FILE).toString();
-    // bool res = mXdgMenu.read(mMenuFile);
-    // if (!res)
-    //     QMessageBox::warning(nullptr, QSL("Parse error"), mXdgMenu.errorString());
-
     auto appLayout = mPlugin->settings()->value(QSL("appLayout"), AppLayout::ListNameAndDescription).value<AppLayout::Layout>();
     mApplicationsView = new ApplicationsView(mPlugin->panel()->iconSize(), appLayout, mApplicationsStack);
     mApplicationsModel = new QStandardItemModel(mApplicationsView);
@@ -151,6 +144,12 @@ bool WingMenuWidget::eventFilter(QObject* watched, QEvent* event)
 {
     if (watched == mSideWidget && event->type() == QEvent::Leave) {
         uncheckSideActions();
+        return true;
+    }
+    auto tb = qobject_cast<QToolButton*>(watched);
+    if (nullptr != tb
+        && event->type() == QEvent::ToolTip
+        && tb->objectName() == QSL("CategoryButton")) {
         return true;
     }
     return false;
@@ -650,6 +649,7 @@ void WingMenuWidget::addCategoryButton(const QIcon& icon, const QString& title, 
     tb->setIconSize(QSize(mIconSize, mIconSize));
     tb->setMinimumHeight(tb->sizeHint().height() * BTNMULTIPLIER);
     tb->setMinimumWidth(tb->sizeHint().width() * BTNMULTIPLIER);
+    tb->installEventFilter(this);
     mCategoryBox->addWidget(tb);
 }
 
