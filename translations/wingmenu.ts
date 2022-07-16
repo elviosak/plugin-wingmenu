@@ -171,17 +171,17 @@
 <context>
     <name>WingMenuWidget</name>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="416"/>
+        <location filename="../wingmenuwidget.cpp" line="427"/>
         <source>Remove from Favorites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="420"/>
+        <location filename="../wingmenuwidget.cpp" line="431"/>
         <source>Confirm removal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="420"/>
+        <location filename="../wingmenuwidget.cpp" line="431"/>
         <source>Are you sure you want to remove
 %1:%2
 from Favorites?
@@ -189,73 +189,73 @@ from Favorites?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="428"/>
+        <location filename="../wingmenuwidget.cpp" line="439"/>
         <source>Add to Favorites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="452"/>
+        <location filename="../wingmenuwidget.cpp" line="463"/>
         <source>Add to desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="458"/>
+        <location filename="../wingmenuwidget.cpp" line="469"/>
         <source>Question</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="458"/>
+        <location filename="../wingmenuwidget.cpp" line="469"/>
         <source>A file with the same name already exists.
 Do you want to overwrite it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="462"/>
+        <location filename="../wingmenuwidget.cpp" line="473"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="462"/>
+        <location filename="../wingmenuwidget.cpp" line="473"/>
         <source>The file cannot be overwritten.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="467"/>
+        <location filename="../wingmenuwidget.cpp" line="478"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="497"/>
+        <location filename="../wingmenuwidget.cpp" line="508"/>
         <source>Favorites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="507"/>
+        <location filename="../wingmenuwidget.cpp" line="518"/>
         <source>All Applications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="705"/>
+        <location filename="../wingmenuwidget.cpp" line="717"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="707"/>
+        <location filename="../wingmenuwidget.cpp" line="719"/>
         <source>Comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="709"/>
+        <location filename="../wingmenuwidget.cpp" line="721"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="710"/>
+        <location filename="../wingmenuwidget.cpp" line="722"/>
         <source>Category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="711"/>
+        <location filename="../wingmenuwidget.cpp" line="723"/>
         <source>Exec</source>
         <translation type="unfinished"></translation>
     </message>

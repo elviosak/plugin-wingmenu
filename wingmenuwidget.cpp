@@ -207,7 +207,7 @@ void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent) {
                 if (mCategoryWidget->isVisible()
                     && ((k == Qt::Key_Left && !mCategoryLeft)
                         || (k == Qt::Key_Right && mCategoryLeft))) {
-                    mCategoryWidget->setFocus();
+                    focusCategoryWidget();
                 }
                 else {
                     sendKeyToApplicationsList(k);
@@ -242,7 +242,7 @@ void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent) {
                     }
                 }
                 else {
-                    mCategoryWidget->setFocus();
+                    focusCategoryWidget();
                 }
             }
             keyEvent->accept();
@@ -310,6 +310,24 @@ void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent) {
     }
     keyEvent->ignore();
 
+}
+
+void WingMenuWidget::focusCategoryWidget() {
+    mCategoryWidget->setFocus();
+    // if the category button is unchecked for some reason
+    // re-check the last action or first;
+    if (nullptr == mCategoryGroup->checkedAction()) {
+        auto actions = mCategoryGroup->actions();
+        if (actions.count() > 0) {
+            for (int i = 0; i < actions.count(); ++i) {
+                if (actions.at(i)->data().toString() == mLastCategory) {
+                    actions.at(i)->setChecked(true);
+                    return;
+                }
+            }
+            actions.at(0)->setChecked(true);
+        }
+    }
 }
 
 void WingMenuWidget::sendKeyToApplicationsList(Qt::Key key) {
@@ -559,10 +577,10 @@ QToolButton* WingMenuWidget::createSideButton(const XdgDesktopFile& df)
     tb->setAutoRaise(true);
     tb->setIconSize(QSize(mIconSize, mIconSize));
     tb->setToolTip(df.name());
-    // tb->setCheckable(true);
     tb->setDefaultAction(a);
     tb->setMinimumWidth(tb->sizeHint().width() * BTNMULTIPLIER);
     tb->setMinimumHeight(tb->sizeHint().height() * BTNMULTIPLIER);
+    tb->setFocusProxy(mSideWidget);
     return tb;
 }
 
@@ -650,6 +668,7 @@ void WingMenuWidget::addCategoryButton(const QIcon& icon, const QString& title, 
     tb->setMinimumHeight(tb->sizeHint().height() * BTNMULTIPLIER);
     tb->setMinimumWidth(tb->sizeHint().width() * BTNMULTIPLIER);
     tb->installEventFilter(this);
+    tb->setFocusProxy(mCategoryWidget);
     mCategoryBox->addWidget(tb);
 }
 
@@ -828,6 +847,7 @@ void WingMenuWidget::uncheckSideActions()
 void WingMenuWidget::categoryActionTriggered(QAction* action)
 {
     auto category = action->data().toString();
+    mCategoryWidget->setFocus();
     filterApplications(DataType::Category, category);
 }
 

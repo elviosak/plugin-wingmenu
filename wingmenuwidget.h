@@ -93,6 +93,7 @@ private:
 
     QString mCurrentWidget;
 
+    void focusCategoryWidget();
     void sendKeyToApplicationsList(Qt::Key key);
     bool eventFilter(QObject* watched, QEvent* event) override;
     void indexActivated(const QModelIndex& index);
