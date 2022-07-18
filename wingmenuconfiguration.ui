@@ -485,13 +485,6 @@
                   </property>
                  </spacer>
                 </item>
-                <item>
-                 <widget class="QPushButton" name="testPB">
-                  <property name="text">
-                   <string>Test</string>
-                  </property>
-                 </widget>
-                </item>
                </layout>
               </widget>
              </item>
@@ -550,7 +543,6 @@
   <tabstop>upActionPB</tabstop>
   <tabstop>downActionPB</tabstop>
   <tabstop>removeActionPB</tabstop>
-  <tabstop>testPB</tabstop>
   <tabstop>tabWidget</tabstop>
  </tabstops>
  <resources/>
