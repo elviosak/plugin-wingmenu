@@ -62,7 +62,8 @@ WingMenuConfiguration::WingMenuConfiguration(PluginSettings& settings,
             QDir::homePath(),
             tr("Images (*.png *.xpm *.svg)"));
         if (!fileName.isEmpty())
-            ui->iconLE->setText(fileName); });
+            ui->iconLE->setText(fileName);
+        });
     connect(ui->menuFilePB, &QPushButton::clicked, this, &WingMenuConfiguration::chooseMenuFile);
 
     connect(ui->customizeLeaveGB, &QGroupBox::toggled, this, &WingMenuConfiguration::customizeLeave);
@@ -142,7 +143,15 @@ void WingMenuConfiguration::loadFromMenu() {
 }
 
 void WingMenuConfiguration::addDesktopFile() {
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Choose Desktop File"),
+        QDir::homePath(),
+        tr("Desktop file (*.desktop)"));
 
+    XdgDesktopFile df;
+    if (!fileName.isEmpty() && df.load(fileName)) {
+        copyDesktopFile(fileName);
+        saveLeaveActions();
+    }
 }
 
 void WingMenuConfiguration::newAction() {
