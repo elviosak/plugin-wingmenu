@@ -53,6 +53,9 @@ bash install.sh
 
 ```
 
-#### Note: it's not well integrated with LXQt Themes, try it with "System" theme.
+#### Note: it's not well integrated with actual LXQt Themes, try it with "System" theme and "Fusion" widget style.
+
+WIP branch for Wing Menu styling in themes: https://github.com/lxqt/lxqt-themes/tree/wing-menu-fixes
+
 
 If everything was successful, you should have a new plugin ready to be added to your panel, named `Wing Menu (wingmenu)`.
