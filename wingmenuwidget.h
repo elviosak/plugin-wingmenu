@@ -4,6 +4,7 @@
 #include <QActionGroup>
 #include <QDomElement>
 #include <QHBoxLayout>
+#include <QLabel>
 #include <QLineEdit>
 #include <QListView>
 #include <QMainWindow>
@@ -71,6 +72,7 @@ private:
     QActionGroup* mCategoryGroup;
     QTimer* mHoverTimer;
     QAction* mHoveredAction;
+    QLabel* mFavoritesInfo;
 
     QStringList mLeaveActions;
     QStringList mOtherActions;

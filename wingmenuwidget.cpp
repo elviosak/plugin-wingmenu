@@ -55,8 +55,8 @@ WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, XdgMenu* xdgMenu, QWidget
     mApplicationsStack(new QStackedWidget(this)),
     mHoverTimer(new QTimer(this)), mHoveredAction(nullptr),
     mXdgMenu(xdgMenu)
-{
 
+{
     mCustomizeLeave = mPlugin->settings()->value(QSL("customizeLeave"), false).toBool();
     mCustomActions = mPlugin->settings()->value(QSL("leaveActions"), QStringList()).toStringList();
     auto appLayout = mPlugin->settings()->value(QSL("appLayout"), AppLayout::ListNameAndDescription).value<AppLayout::Layout>();
@@ -64,6 +64,12 @@ WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, XdgMenu* xdgMenu, QWidget
     mApplicationsModel = new QStandardItemModel(mApplicationsView);
     mProxyModel = new QSortFilterProxyModel(mApplicationsView);
     mFavoritesView = new ApplicationsView(mPlugin->panel()->iconSize(), appLayout, mApplicationsStack);
+    auto infoLayout = new QVBoxLayout(mFavoritesView);
+    mFavoritesInfo = new QLabel(tr("Favorites list is empty, add items with the right-click menu from items on another category."));
+    mFavoritesInfo->setAlignment(Qt::AlignCenter);
+    mFavoritesInfo->setWordWrap(true);
+    infoLayout->addWidget(mFavoritesInfo);
+
     mFavoritesModel = new QStandardItemModel(mFavoritesView);
     setAutoFillBackground(true);
     mProxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
@@ -116,14 +122,13 @@ WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, XdgMenu* xdgMenu, QWidget
 
 void WingMenuWidget::onShow()
 {
-    if (mFavoritesList.count() == 0) {
-        if (QAction* a = mCategoryGroup->actions().at(1))
-            if (!a->isChecked())
-                a->trigger();
-    }
-    else if (QAction* a = mCategoryGroup->actions().at(0)) {
+    if (QAction* a = mCategoryGroup->actions().at(0)) {
         if (!a->isChecked())
             a->trigger();
+        if (mFavoritesList.count() == 0)
+            mFavoritesInfo->show();
+        else
+            mFavoritesInfo->hide();
     }
 }
 
@@ -162,7 +167,6 @@ bool WingMenuWidget::eventFilter(QObject* watched, QEvent* event)
 }
 
 void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent) {
-
     auto k = (Qt::Key)keyEvent->key();
     if (QKeySequence(keyEvent->key() | keyEvent->modifiers())
         == QKeySequence(mPlugin->shortcut()->shortcut())) {
@@ -186,14 +190,9 @@ void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent) {
         mPlugin->hideMenu();
         keyEvent->accept();
     }
-    else if (!keyEvent->text().isEmpty()
-        && k != Qt::Key_Backspace
-        && k != Qt::Key_Delete
-        && k != Qt::Key_Tab) {
-
+    else if (!keyEvent->text().isEmpty()) {
         mSearchEdit->setFocus();
-        mSearchEdit->insert(keyEvent->text());
-
+        mSearchEdit->event(keyEvent);
         keyEvent->accept();
     }
     else if (k == Qt::Key_Left
@@ -251,9 +250,12 @@ void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent) {
                     focusCategoryWidget();
                 }
             }
+            else {
+                mSearchEdit->setFocus();
+            }
             keyEvent->accept();
         }
-        // focus is NOT on search and key is UP or DOWN
+        // Focus is NOT on search and key is UP or DOWN
         // this is to cycle between options on focused widget
         else {
             if (mSideWidget->hasFocus()) {
@@ -267,7 +269,6 @@ void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent) {
                             nextIndex--;
                         else
                             nextIndex++;
-
                     }
                     else if (k == Qt::Key_Up) {
                         if (mReverseSidebar)
@@ -310,8 +311,10 @@ void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent) {
             else if (mApplicationsStack->currentWidget()->hasFocus()) {
                 sendKeyToApplicationsList(k);
             }
+            else {
+                mSearchEdit->setFocus();
+            }
         }
-
         keyEvent->accept();
     }
     keyEvent->ignore();
@@ -320,7 +323,7 @@ void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent) {
 
 void WingMenuWidget::focusCategoryWidget() {
     mCategoryWidget->setFocus();
-    // if the category button is unchecked for some reason
+    // If the category button is unchecked for some reason
     // re-check the last action or first;
     if (nullptr == mCategoryGroup->checkedAction()) {
         auto actions = mCategoryGroup->actions();
@@ -341,7 +344,7 @@ void WingMenuWidget::sendKeyToApplicationsList(Qt::Key key) {
     auto model = current->model();
     auto index = current->currentIndex();
     auto rows = model->rowCount();
-    // when current has focus, this function won't receive left and right keys,
+    // When current has focus, this function won't receive left and right keys,
     // it is handled by keyPressEvent
     if (current->hasFocus()) {
         if (index.isValid()) {
@@ -363,7 +366,7 @@ void WingMenuWidget::sendKeyToApplicationsList(Qt::Key key) {
                 auto nextIndex = model->index(rows - 1, 0);
                 current->setCurrentIndex(nextIndex);
             }
-            // key down
+            // Key_Down
             else {
                 auto nextIndex = model->index(0, 0);
                 current->setCurrentIndex(nextIndex);
@@ -679,7 +682,6 @@ void WingMenuWidget::addCategoryButton(const QIcon& icon, const QString& title, 
     mCategoryGroup->addAction(action);
     tb->setDefaultAction(action);
     tb->setObjectName(QSL("CategoryButton"));
-    // tb->setCheckable(true);
     tb->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     tb->setAutoRaise(true);
     tb->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
@@ -922,6 +924,10 @@ void WingMenuWidget::addItemToFavorites(const XdgDesktopFile& df)
 
 void WingMenuWidget::saveFavoritesList()
 {
+    if (mFavoritesList.count() == 0)
+        mFavoritesInfo->show();
+    else
+        mFavoritesInfo->hide();
     mPlugin->settings()->setValue(QSL("favoritesList"), QVariant::fromValue(mFavoritesList));
 }
 
