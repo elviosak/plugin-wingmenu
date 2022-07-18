@@ -130,6 +130,8 @@ void WingMenuWidget::onShow()
 void WingMenuWidget::onHide()
 {
     uncheckSideActions();
+    mApplicationsView->setCurrentIndex(QModelIndex());
+    mFavoritesView->setCurrentIndex(QModelIndex());
     mSearchEdit->setText(QString());
 }
 
