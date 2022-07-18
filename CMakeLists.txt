@@ -90,7 +90,6 @@ set(SOURCES
 
 set(UIS
   "${PLUGIN}configuration.ui"
-#  "${PLUGIN}widget.ui"
 )
 
 set(LIBRARIES

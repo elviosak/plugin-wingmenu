@@ -56,6 +56,9 @@ WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, XdgMenu* xdgMenu, QWidget
     mHoverTimer(new QTimer(this)), mHoveredAction(nullptr),
     mXdgMenu(xdgMenu)
 {
+
+    mCustomizeLeave = mPlugin->settings()->value(QSL("customizeLeave"), false).toBool();
+    mCustomActions = mPlugin->settings()->value(QSL("leaveActions"), QStringList()).toStringList();
     auto appLayout = mPlugin->settings()->value(QSL("appLayout"), AppLayout::ListNameAndDescription).value<AppLayout::Layout>();
     mApplicationsView = new ApplicationsView(mPlugin->panel()->iconSize(), appLayout, mApplicationsStack);
     mApplicationsModel = new QStandardItemModel(mApplicationsView);
@@ -596,16 +599,29 @@ void WingMenuWidget::buildSideButtons()
 
     for (const auto& option : qAsConst(mOtherActions)) {
         XdgDesktopFile df;
-        df.load(option);
-        auto tb = createSideButton(df);
-        int index = mSideBox->indexOf(mSideSpacer);
-        mSideBox->insertWidget(index, tb);
+        if (df.load(option)) {
+            auto tb = createSideButton(df);
+            int index = mSideBox->indexOf(mSideSpacer);
+            mSideBox->insertWidget(index, tb);
+        }
     }
-    for (const auto& option : qAsConst(mLeaveActions)) {
-        XdgDesktopFile df;
-        df.load(option);
-        auto tb = createSideButton(df);
-        mSideBox->addWidget(tb);
+    if (mCustomizeLeave) {
+        for (const auto& option : qAsConst(mCustomActions)) {
+            XdgDesktopFile df;
+            if (df.load(option)) {
+                auto tb = createSideButton(df);
+                mSideBox->addWidget(tb);
+            }
+        }
+    }
+    else {
+        for (const auto& option : qAsConst(mLeaveActions)) {
+            XdgDesktopFile df;
+            if (df.load(option)) {
+                auto tb = createSideButton(df);
+                mSideBox->addWidget(tb);
+            }
+        }
     }
 }
 
@@ -675,8 +691,8 @@ void WingMenuWidget::addCategoryButton(const QIcon& icon, const QString& title, 
 void WingMenuWidget::addItem(const QDomElement& xml, const QString& category)
 {
     XdgDesktopFile df;
-    df.load(xml.attribute(QSL("desktopFile")));
-    addItem(df, category);
+    if (df.load(xml.attribute(QSL("desktopFile"))))
+        addItem(df, category);
 }
 
 void WingMenuWidget::addItem(const XdgDesktopFile& df, const QString& category)
@@ -737,6 +753,8 @@ void WingMenuWidget::settingsChanged()
     mSwitchOnHover = mPlugin->settings()->value(QSL("switchOnHover"), true).toBool();
     auto hoverDelay = mPlugin->settings()->value(QSL("hoverDelay"), 200).toInt();
     mAskFavoriteRemove = mPlugin->settings()->value(QSL("askFavoriteRemove"), false).toBool();
+    auto customizeLeave = mPlugin->settings()->value(QSL("customizeLeave"), false).toBool();
+    auto customActions = mPlugin->settings()->value(QSL("leaveActions"), QStringList()).toStringList();
 
     hoverDelay = qBound(50, hoverDelay, 1000);
     if (mSwitchOnHover) {
@@ -748,6 +766,7 @@ void WingMenuWidget::settingsChanged()
     else {
         mHoverTimer->stop();
     }
+
 
     if (mCategoryLeft)
         mMenuBox->setDirection(QBoxLayout::LeftToRight);
@@ -769,6 +788,12 @@ void WingMenuWidget::settingsChanged()
     else
         mSideBox->setDirection(QBoxLayout::TopToBottom);
 
+    if (mCustomizeLeave != customizeLeave
+        || mCustomActions != customActions) {
+        mCustomizeLeave = customizeLeave;
+        mCustomActions = customActions;
+        buildSideButtons();
+    }
 }
 
 void WingMenuWidget::focusLineEdit()
@@ -827,9 +852,15 @@ void WingMenuWidget::filterApplications(DataType type, const QString& filterStri
 void WingMenuWidget::sideActionTriggered(QAction* action)
 {
     XdgDesktopFile df;
-    df.load(action->data().toString());
-    df.startDetached();
-    mPlugin->hideMenu();
+    if (df.load(action->data().toString())) {
+        df.startDetached();
+        mPlugin->hideMenu();
+    }
+    else {
+        QMessageBox::warning(this,
+            tr("Failed to start the application"),
+            tr("%1 is not a valid .desktop file").arg(action->data().toString()));
+    }
 }
 
 void WingMenuWidget::sideActionHovered(QAction* action)

@@ -25,7 +25,7 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="GeneralTab">
       <attribute name="title">
        <string>General</string>
       </attribute>
@@ -294,6 +294,215 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="LeaveActionsTab">
+      <attribute name="title">
+       <string>Leave Actions</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QGroupBox" name="customizeLeaveGB">
+         <property name="title">
+          <string>Customize Leave Actions</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QWidget" name="widget_5" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QPushButton" name="loadFromMenuPB">
+               <property name="text">
+                <string>Load from menu file</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="addDesktopFilePB">
+               <property name="text">
+                <string>Add .desktop file</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="locationLB">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>The order displayed here ignores the option &quot;Reverse sidebar&quot;.</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_3" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QListView" name="leaveActionsView">
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
+               </property>
+               <property name="showDropIndicator" stdset="0">
+                <bool>false</bool>
+               </property>
+               <property name="dragEnabled">
+                <bool>false</bool>
+               </property>
+               <property name="dragDropMode">
+                <enum>QAbstractItemView::NoDragDrop</enum>
+               </property>
+               <property name="defaultDropAction">
+                <enum>Qt::IgnoreAction</enum>
+               </property>
+               <property name="alternatingRowColors">
+                <bool>true</bool>
+               </property>
+               <property name="selectionMode">
+                <enum>QAbstractItemView::SingleSelection</enum>
+               </property>
+               <property name="selectionBehavior">
+                <enum>QAbstractItemView::SelectRows</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_4" native="true">
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QPushButton" name="newActionPB">
+                  <property name="text">
+                   <string>New</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="document-new">
+                    <normaloff>.</normaloff>.</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="editActionPB">
+                  <property name="text">
+                   <string>Edit</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="document-edit">
+                    <normaloff>.</normaloff>.</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Fixed</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>10</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="upActionPB">
+                  <property name="text">
+                   <string>Up</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="go-up">
+                    <normaloff>.</normaloff>.</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="downActionPB">
+                  <property name="text">
+                   <string>Down</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="go-down">
+                    <normaloff>.</normaloff>.</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Fixed</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>10</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="removeActionPB">
+                  <property name="text">
+                   <string>Remove</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="edit-delete">
+                    <normaloff>.</normaloff>.</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="testPB">
+                  <property name="text">
+                   <string>Test</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item>
@@ -324,6 +533,24 @@
   <tabstop>menuFileLE</tabstop>
   <tabstop>menuFilePB</tabstop>
   <tabstop>shortcutEd</tabstop>
+  <tabstop>categoryLeftCB</tabstop>
+  <tabstop>searchBottomCB</tabstop>
+  <tabstop>sidebarLeftCB</tabstop>
+  <tabstop>reverseSidebarCB</tabstop>
+  <tabstop>appLayoutCombo</tabstop>
+  <tabstop>switchOnHoverCB</tabstop>
+  <tabstop>hoverDelaySB</tabstop>
+  <tabstop>askFavoriteRemoveCB</tabstop>
+  <tabstop>customizeLeaveGB</tabstop>
+  <tabstop>loadFromMenuPB</tabstop>
+  <tabstop>addDesktopFilePB</tabstop>
+  <tabstop>leaveActionsView</tabstop>
+  <tabstop>newActionPB</tabstop>
+  <tabstop>editActionPB</tabstop>
+  <tabstop>upActionPB</tabstop>
+  <tabstop>downActionPB</tabstop>
+  <tabstop>removeActionPB</tabstop>
+  <tabstop>testPB</tabstop>
   <tabstop>tabWidget</tabstop>
  </tabstops>
  <resources/>

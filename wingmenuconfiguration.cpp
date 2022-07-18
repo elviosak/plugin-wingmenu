@@ -1,50 +1,62 @@
 #include "wingmenuconfiguration.h"
 #include "ui_wingmenuconfiguration.h"
+#include "common.h"
 
 #include <QAction>
 #include <QButtonGroup>
 #include <QComboBox>
 #include <QDialogButtonBox>
 #include <QDir>
+#include <QDialog>
+#include <QDialogButtonBox>
 #include <QFileDialog>
+#include <QMessageBox>
 #include <QSpinBox>
+#include <QStandardPaths>
 #include <QTimer>
 
 #include <lxqt-globalkeys.h>
+#include <XdgDesktopFile>
+#include <XdgMenu>
+#include <XmlHelper>
 
 WingMenuConfiguration::WingMenuConfiguration(PluginSettings& settings,
     GlobalKeyShortcut::Action* shortcut,
-    const QString& defaultShortcut,
+    XdgMenu* xdgMenu,
     QWidget* parent)
     : QDialog(parent),
     ui(new Ui::WingMenuConfiguration),
     mSettings(settings),
-    mDefaultShortcut(defaultShortcut),
-    mShortcut(shortcut)
+    mXdgMenu(xdgMenu),
+    mShortcut(shortcut),
+    mLeaveActionsModel(new QStandardItemModel),
+    mDesktopFilesDir(QSL("%1/wingmenu").arg(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)))
 {
     setAttribute(Qt::WA_DeleteOnClose);
-    setObjectName(QStringLiteral("WingMenuConfigurationWindow"));
+    setObjectName(QSL("WingMenuConfigurationWindow"));
     ui->setupUi(this);
-    loadSettings();
+    ui->leaveActionsView->setModel(mLeaveActionsModel);
+    ui->locationLB->setText(tr("Files are stored in: %1").arg(mDesktopFilesDir));
 
+    loadSettings();
     connect(ui->shortcutEd, &ShortcutSelector::shortcutGrabbed, this, &WingMenuConfiguration::shortcutChanged);
     connect(ui->shortcutEd->addMenuAction(tr("Reset")), &QAction::triggered, this, &WingMenuConfiguration::shortcutReset);
     connect(mShortcut, &GlobalKeyShortcut::Action::shortcutChanged, this, &WingMenuConfiguration::globalShortcutChanged);
     connect(ui->buttons, &QDialogButtonBox::clicked, this, &WingMenuConfiguration::dialogButtonsAction);
 
-    connect(ui->iconCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QStringLiteral("showIcon"), checked); });
-    connect(ui->iconLE, &QLineEdit::textChanged, this, [this](QString text) { this->settings().setValue(QStringLiteral("icon"), text); });
-    connect(ui->textCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QStringLiteral("showText"), checked); });
-    connect(ui->textLE, &QLineEdit::textChanged, this, [this](QString text) { this->settings().setValue(QStringLiteral("text"), text); });
-    connect(ui->menuFileLE, &QLineEdit::textChanged, this, [this](QString text) { this->settings().setValue(QStringLiteral("menuFile"), text); });
-    connect(ui->switchOnHoverCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QStringLiteral("switchOnHover"), checked); });
-    connect(ui->hoverDelaySB, QOverload<int>::of(&QSpinBox::valueChanged), this, [this](int value) { this->settings().setValue(QStringLiteral("hoverDelay"), value); });
-    connect(ui->categoryLeftCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QStringLiteral("categoryLeft"), checked); });
-    connect(ui->searchBottomCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QStringLiteral("searchBottom"), checked); });
-    connect(ui->sidebarLeftCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QStringLiteral("sidebarLeft"), checked); });
-    connect(ui->reverseSidebarCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QStringLiteral("reverseSidebar"), checked); });
-    connect(ui->appLayoutCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int index) { this->settings().setValue(QStringLiteral("appLayout"), index); });
-    connect(ui->askFavoriteRemoveCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QStringLiteral("askFavoriteRemove"), checked); });
+    connect(ui->iconCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QSL("showIcon"), checked); });
+    connect(ui->iconLE, &QLineEdit::textChanged, this, [this](QString text) { this->settings().setValue(QSL("icon"), text); });
+    connect(ui->textCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QSL("showText"), checked); });
+    connect(ui->textLE, &QLineEdit::textChanged, this, [this](QString text) { this->settings().setValue(QSL("text"), text); });
+    connect(ui->menuFileLE, &QLineEdit::textChanged, this, [this](QString text) { this->settings().setValue(QSL("menuFile"), text); });
+    connect(ui->switchOnHoverCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QSL("switchOnHover"), checked); });
+    connect(ui->hoverDelaySB, QOverload<int>::of(&QSpinBox::valueChanged), this, [this](int value) { this->settings().setValue(QSL("hoverDelay"), value); });
+    connect(ui->categoryLeftCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QSL("categoryLeft"), checked); });
+    connect(ui->searchBottomCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QSL("searchBottom"), checked); });
+    connect(ui->sidebarLeftCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QSL("sidebarLeft"), checked); });
+    connect(ui->reverseSidebarCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QSL("reverseSidebar"), checked); });
+    connect(ui->appLayoutCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int index) { this->settings().setValue(QSL("appLayout"), index); });
+    connect(ui->askFavoriteRemoveCB, &QCheckBox::toggled, this, [this](bool checked) { this->settings().setValue(QSL("askFavoriteRemove"), checked); });
     connect(ui->iconPB, &QPushButton::clicked, this, [this] {
         QString fileName = QFileDialog::getOpenFileName(this, tr("Choose Icon File"),
             QDir::homePath(),
@@ -52,10 +64,232 @@ WingMenuConfiguration::WingMenuConfiguration(PluginSettings& settings,
         if (!fileName.isEmpty())
             ui->iconLE->setText(fileName); });
     connect(ui->menuFilePB, &QPushButton::clicked, this, &WingMenuConfiguration::chooseMenuFile);
+
+    connect(ui->customizeLeaveGB, &QGroupBox::toggled, this, &WingMenuConfiguration::customizeLeave);
+    connect(ui->loadFromMenuPB, &QPushButton::clicked, this, &WingMenuConfiguration::loadFromMenu);
+    connect(ui->addDesktopFilePB, &QPushButton::clicked, this, &WingMenuConfiguration::addDesktopFile);
+    connect(ui->newActionPB, &QPushButton::clicked, this, &WingMenuConfiguration::newAction);
+    connect(ui->editActionPB, &QPushButton::clicked, this, &WingMenuConfiguration::editAction);
+    connect(ui->upActionPB, &QPushButton::clicked, this, &WingMenuConfiguration::upAction);
+    connect(ui->downActionPB, &QPushButton::clicked, this, &WingMenuConfiguration::downAction);
+    connect(ui->removeActionPB, &QPushButton::clicked, this, &WingMenuConfiguration::removeAction);
+    connect(ui->leaveActionsView, &QListView::activated, this, &WingMenuConfiguration::actionActivated);
 }
-void WingMenuConfiguration::chooseMenuFile() {
+void WingMenuConfiguration::actionActivated(const QModelIndex& index) {
+    auto item = mLeaveActionsModel->itemFromIndex(index);
+    openEditDialog(item->data().toString());
+}
+QStandardItem* WingMenuConfiguration::createItem(const QString& fileName) const
+{
+    XdgDesktopFile df;
+    df.load(fileName);
+    auto name = df.name();
+    auto icon = df.icon();
+    auto item = new QStandardItem(icon, name);
+    item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    item->setToolTip(df.value(QSL("Exec")).toString());
+    item->setData(fileName);
+    item->setDropEnabled(false);
+    return item;
+}
+
+void WingMenuConfiguration::copyDesktopFile(const QString& fileName)
+{
+    XdgDesktopFile df;
+    if (df.load(fileName)) {
+        auto newFile = newFileName();
+        df.save(newFile);
+        auto item = createItem(newFile);
+        mLeaveActionsModel->appendRow(item);
+    }
+}
+
+void WingMenuConfiguration::loadLeaveActions() const
+{
+    mLeaveActionsModel->clear();
+    auto leaveActions = settings().value(QSL("leaveActions"), QStringList()).toStringList();
+    for (const QString& fileName : leaveActions) {
+        mLeaveActionsModel->appendRow(createItem(fileName));
+    }
+}
+
+void WingMenuConfiguration::saveLeaveActions() {
+    QStringList leaveActions;
+    for (int i = 0; i < mLeaveActionsModel->rowCount(); ++i) {
+        leaveActions << mLeaveActionsModel->item(i)->data().toString();
+    }
+    settings().setValue(QSL("leaveActions"), leaveActions);
+}
+
+void WingMenuConfiguration::customizeLeave(bool customize) {
+    settings().setValue(QSL("customizeLeave"), customize);
+}
+
+void WingMenuConfiguration::loadFromMenu() {
+    auto mXml = mXdgMenu->xml().documentElement();
+    DomElementIterator it(mXml, QString());
+    while (it.hasNext()) {
+        QDomElement xml = it.next();
+        if (xml.tagName() == QSL("Menu") && xml.attribute(QSL("name")) == QSL("X-Leave")) {
+            DomElementIterator it(xml, QString());
+            while (it.hasNext()) {
+                QDomElement xmlItem = it.next();
+                copyDesktopFile(xmlItem.attribute(QSL("desktopFile")));
+            }
+        }
+    }
+    saveLeaveActions();
+}
+
+void WingMenuConfiguration::addDesktopFile() {
+
+}
+
+void WingMenuConfiguration::newAction() {
+    openEditDialog();
+}
+
+void WingMenuConfiguration::editAction() {
+    auto index = ui->leaveActionsView->currentIndex();
+    if (index.isValid()) {
+        auto item = mLeaveActionsModel->itemFromIndex(index);
+        openEditDialog(item->data().toString());
+    }
+    else {
+        QMessageBox::warning(this, tr("No item selected"), tr("Please select an item to edit."));
+    }
+}
+
+void WingMenuConfiguration::upAction() {
+    auto current = ui->leaveActionsView->currentIndex();
+    if (current.isValid() && current.row() > 0) {
+        auto item = mLeaveActionsModel->takeRow(current.row()).first();
+        mLeaveActionsModel->insertRow(current.row() - 1, item);
+        ui->leaveActionsView->setCurrentIndex(item->index());
+        saveLeaveActions();
+    }
+}
+
+void WingMenuConfiguration::downAction() {
+    auto current = ui->leaveActionsView->currentIndex();
+    if (current.isValid() && current.row() < mLeaveActionsModel->rowCount() - 1) {
+        auto item = mLeaveActionsModel->takeRow(current.row()).first();
+        mLeaveActionsModel->insertRow(current.row() + 1, item);
+        ui->leaveActionsView->setCurrentIndex(item->index());
+        saveLeaveActions();
+    }
+}
+
+void WingMenuConfiguration::removeAction() {
+    auto index = ui->leaveActionsView->currentIndex();
+    if (index.isValid()) {
+        auto item = mLeaveActionsModel->itemFromIndex(index);
+        QFile file(item->data().toString());
+        file.remove();
+        mLeaveActionsModel->removeRow(index.row());
+        saveLeaveActions();
+    }
+    else {
+        QMessageBox::warning(this, tr("No item selected"), tr("Please select an item to remove."));
+    }
+}
+
+void WingMenuConfiguration::openEditDialog(const QString& fileName) {
+    auto d = new QDialog;
+    d->setWindowTitle(tr("Edit Action"));
+    auto form = new QFormLayout(d);
+    auto nameLine = new QLineEdit;
+    auto iconLine = new QLineEdit;
+    auto execLine = new QLineEdit;
+    if (!fileName.isEmpty()) {
+        XdgDesktopFile d;
+        if (d.load(fileName)) {
+            nameLine->setText(d.name());
+            iconLine->setText(d.iconName());
+            execLine->setText(d.expandExecString().join(QLatin1Char(' ')));
+        }
+    }
+
+    nameLine->setMinimumWidth(200);
+    auto btnBox = new QDialogButtonBox(QDialogButtonBox::Save | QDialogButtonBox::Cancel, d);
+    form->addRow(tr("Name"), nameLine);
+    form->addRow(tr("Icon"), iconLine);
+    form->addRow(tr("Command"), execLine);
+    form->addRow(btnBox);
+    connect(btnBox, &QDialogButtonBox::accepted, this,
+        [=] {
+            if (!nameLine->text().isEmpty()
+                && !iconLine->text().isEmpty()
+                && !execLine->text().isEmpty())
+            {
+                XdgDesktopFile df(XdgDesktopFile::ApplicationType, nameLine->text(), execLine->text());
+                df.setValue(QSL("Icon"), iconLine->text());
+                saveDesktopFile(nameLine->text(), iconLine->text(), execLine->text(), fileName);
+                d->close();
+            }
+            else {
+                QStringList textList;
+                if (nameLine->text().isEmpty())
+                    textList << tr("\"Name\" field is empty.");
+                if (iconLine->text().isEmpty())
+                    textList << tr("\"Icon\" field is empty.");
+                if (execLine->text().isEmpty())
+                    textList << tr("\"Command\" field is empty.");
+                QMessageBox::warning(d, tr("Please fill all fields."), textList.join(QLatin1Char('\n')));
+            }
+        });
+    connect(btnBox, &QDialogButtonBox::rejected, this,
+        [=] {
+            d->close();
+        });
+    d->exec();
+}
+
+void WingMenuConfiguration::saveDesktopFile(const QString& name, const QString& icon, const QString& exec, const QString& fileName)
+{
+    if (fileName.isEmpty()) {
+
+        auto newFile = newFileName();
+        XdgDesktopFile df(XdgDesktopFile::ApplicationType, name, exec);
+        df.setValue(QSL("Icon"), icon);
+        df.save(newFile);
+        mLeaveActionsModel->appendRow(createItem(newFile));
+    }
+    else {
+        for (int i = 0; i < mLeaveActionsModel->rowCount(); ++i)
+        {
+            auto item = mLeaveActionsModel->item(i);
+            if (item->data().toString() == fileName) {
+                XdgDesktopFile df;
+                df.load(fileName);
+                df.setLocalizedValue(QSL("Name"), name);
+                df.setValue(QSL("Icon"), icon);
+                df.setValue(QSL("Exec"), exec);
+                df.save(fileName);
+                item->setText(df.name());
+                item->setIcon(df.icon());
+                break;
+            }
+        }
+    }
+    saveLeaveActions();
+}
+
+QString WingMenuConfiguration::newFileName()
+{
+    QDir dir(mDesktopFilesDir);
+    dir.mkpath(QSL("."));
+    for (int i = 0;;++i) {
+        QString fileName = QSL("%1.desktop").arg(i);
+        if (!dir.exists(fileName))
+            return dir.absolutePath() + QLatin1Char('/') + fileName;
+    }
+}
+
+void WingMenuConfiguration::chooseMenuFile()
+{
     QString fileName = QFileDialog::getOpenFileName(this, tr("Choose Menu File"),
-        settings().value(QStringLiteral("menuFile"), QStringLiteral("/etc/xdg/menus/lxqt-applications.menu")).toString(),
+        settings().value(QSL("menuFile"), QSL("/etc/xdg/menus/lxqt-applications.menu")).toString(),
         tr("Menu files (*.menu)"));
     if (!fileName.isEmpty())
         ui->menuFileLE->setText(fileName);
@@ -74,26 +308,27 @@ void WingMenuConfiguration::shortcutChanged(const QString& value)
 
 void WingMenuConfiguration::shortcutReset()
 {
-    shortcutChanged(mDefaultShortcut);
+    shortcutChanged(DEFAULT_SHORTCUT);
 }
 
 void WingMenuConfiguration::loadSettings() const
 {
     ui->shortcutEd->setText(mShortcut->shortcut());
 
-    auto showIcon = settings().value(QStringLiteral("showIcon"), true).toBool();
-    auto icon = settings().value(QStringLiteral("icon"), QStringLiteral("wing-lxqt")).toString();
-    auto showText = settings().value(QStringLiteral("showText"), true).toBool();
-    auto text = settings().value(QStringLiteral("text"), tr("Menu")).toString();
-    auto menuFile = settings().value(QStringLiteral("menuFile"), QStringLiteral("/etc/xdg/menus/lxqt-applications.menu")).toString();
-    auto switchOnHover = settings().value(QStringLiteral("switchOnHover"), true).toBool();
-    auto hoverDelay = settings().value(QStringLiteral("hoverDelay"), 200).toInt();
-    auto categoryLeft = settings().value(QStringLiteral("categoryLeft"), true).toBool();
-    auto searchBottom = settings().value(QStringLiteral("searchBottom"), true).toBool();
-    auto sidebarLeft = settings().value(QStringLiteral("sidebarLeft"), true).toBool();
-    auto reverseSidebar = settings().value(QStringLiteral("reverseSidebar"), false).toBool();
-    auto appLayout = settings().value(QStringLiteral("appLayout"), 0).toInt();
-    auto askFavoriteRemove = settings().value(QStringLiteral("askFavoriteRemove"), false).toBool();
+    auto showIcon = settings().value(QSL("showIcon"), true).toBool();
+    auto icon = settings().value(QSL("icon"), QSL("wing-lxqt")).toString();
+    auto showText = settings().value(QSL("showText"), true).toBool();
+    auto text = settings().value(QSL("text"), tr("Menu")).toString();
+    auto menuFile = settings().value(QSL("menuFile"), DEFAULT_MENU_FILE).toString();
+    auto switchOnHover = settings().value(QSL("switchOnHover"), true).toBool();
+    auto hoverDelay = settings().value(QSL("hoverDelay"), 200).toInt();
+    auto categoryLeft = settings().value(QSL("categoryLeft"), true).toBool();
+    auto searchBottom = settings().value(QSL("searchBottom"), true).toBool();
+    auto sidebarLeft = settings().value(QSL("sidebarLeft"), true).toBool();
+    auto reverseSidebar = settings().value(QSL("reverseSidebar"), false).toBool();
+    auto appLayout = settings().value(QSL("appLayout"), 0).toInt();
+    auto askFavoriteRemove = settings().value(QSL("askFavoriteRemove"), false).toBool();
+    auto customizeLeave = settings().value(QSL("customizeLeave"), false).toBool();
 
     ui->iconCB->setChecked(showIcon);
     ui->iconLE->setText(icon);
@@ -108,6 +343,8 @@ void WingMenuConfiguration::loadSettings() const
     ui->reverseSidebarCB->setChecked(reverseSidebar);
     ui->appLayoutCombo->setCurrentIndex(appLayout);
     ui->askFavoriteRemoveCB->setChecked(askFavoriteRemove);
+    ui->customizeLeaveGB->setChecked(customizeLeave);
+    loadLeaveActions();
 }
 
 PluginSettings& WingMenuConfiguration::settings() const
@@ -119,7 +356,7 @@ void WingMenuConfiguration::dialogButtonsAction(QAbstractButton* btn)
 {
     QDialogButtonBox* box = qobject_cast<QDialogButtonBox*>(btn->parent());
     if (box && box->buttonRole(btn) == QDialogButtonBox::ResetRole) {
-        mSettings.loadFromCache();
+        settings().loadFromCache();
         loadSettings();
     }
     else {

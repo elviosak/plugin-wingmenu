@@ -2,11 +2,14 @@
 
 #include <QAbstractButton>
 #include <QDialog>
+#include <QStandardItemModel>
 
 #include <lxqtpanelglobals.h>
 #include <pluginsettings.h>
 
-class QComboBox;
+class XdgDesktopFile;
+class XdgMenu;
+// class QComboBox;
 namespace Ui
 {
     class WingMenuConfiguration;
@@ -24,16 +27,17 @@ public:
     explicit WingMenuConfiguration(
         PluginSettings& settings,
         GlobalKeyShortcut::Action* shortcut,
-        const QString& defaultShortcut,
+        XdgMenu* xdgMenu,
         QWidget* parent = nullptr);
 
     explicit WingMenuConfiguration(
         PluginSettings* settings,
         GlobalKeyShortcut::Action* shortcut,
-        const QString& defaultShortcut,
-        QWidget* parent = nullptr) : WingMenuConfiguration(*settings,
+        XdgMenu* xdgMenu,
+        QWidget* parent = nullptr) : WingMenuConfiguration(
+            *settings,
             shortcut,
-            defaultShortcut,
+            xdgMenu,
             parent) {};
 
     ~WingMenuConfiguration() = default;
@@ -47,11 +51,31 @@ protected slots:
 private:
     Ui::WingMenuConfiguration* ui;
     PluginSettings& mSettings;
-    QString mDefaultShortcut;
+    XdgMenu* mXdgMenu;
     GlobalKeyShortcut::Action* mShortcut;
+    QStandardItemModel* mLeaveActionsModel;
+    QString mDesktopFilesDir;
 
     void globalShortcutChanged(const QString& oldShortcut, const QString& newShortcut);
     void shortcutChanged(const QString& value);
     void shortcutReset();
     void chooseMenuFile();
+
+    void actionActivated(const QModelIndex& index);
+    QStandardItem* createItem(const QString& fileName) const;
+    void copyDesktopFile(const QString& fileName);
+    void loadLeaveActions() const;
+    void saveLeaveActions();
+    void customizeLeave(bool customize);
+    void loadFromMenu();
+    void addDesktopFile();
+    void newAction();
+    void editAction();
+    void upAction();
+    void downAction();
+    void removeAction();
+    void openEditDialog(const QString& fileName = QString());
+    void saveDesktopFile(const QString& name, const QString& icon, const QString& exec, const QString& fileName);
+    QString newFileName();
+
 };

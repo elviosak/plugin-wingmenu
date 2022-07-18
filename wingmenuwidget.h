@@ -86,6 +86,9 @@ private:
     bool mAskFavoriteRemove;
     bool mSwitchOnHover;
     int mHoverDelay;
+    bool mCustomizeLeave;
+    QStringList mCustomActions;
+
     XdgMenu* mXdgMenu;
     QDomElement mXml;
     QString mLogDir;

@@ -7,7 +7,11 @@
 #endif
 
 #ifndef DEFAULT_MENU_FILE
-#define DEFAULT_MENU_FILE QStringLiteral("/etc/xdg/menus/lxqt-applications.menu")
+#define DEFAULT_MENU_FILE QSL("/etc/xdg/menus/lxqt-applications.menu")
+#endif
+
+#ifndef DEFAULT_SHORTCUT
+#define DEFAULT_SHORTCUT QSL("Alt+Shift+F1")
 #endif
 
 namespace AppLayout {
@@ -18,4 +22,4 @@ namespace AppLayout {
         Icons = 2
     };
     Q_ENUM_NS(Layout)
-}
+};

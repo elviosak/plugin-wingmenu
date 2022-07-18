@@ -9,8 +9,6 @@
 
 #include <lxqtglobalkeys.h>
 
-#define DEFAULT_SHORTCUT "Alt+Shift+F1"
-
 WingMenuPlugin::WingMenuPlugin(const ILXQtPanelPluginStartupInfo& startupInfo)
     : QObject(),
     ILXQtPanelPlugin(startupInfo),
@@ -117,7 +115,7 @@ void WingMenuPlugin::setupShortcut()
     if (mShortcut) {
         connect(mShortcut, &GlobalKeyShortcut::Action::registrationFinished, this, [this] {
             if (mShortcut->shortcut().isEmpty())
-                mShortcut->changeShortcut(QSL(DEFAULT_SHORTCUT)); });
+                mShortcut->changeShortcut(DEFAULT_SHORTCUT); });
         connect(mShortcut, &GlobalKeyShortcut::Action::activated, this, [this] { showHideMenu(); });
     }
 }
@@ -165,5 +163,5 @@ void WingMenuPlugin::realign()
 
 QDialog* WingMenuPlugin::configureDialog()
 {
-    return new WingMenuConfiguration(settings(), mShortcut, QSL(DEFAULT_SHORTCUT));
+    return new WingMenuConfiguration(settings(), mShortcut, mXdgMenu);
 }
