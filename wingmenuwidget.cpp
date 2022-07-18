@@ -78,6 +78,7 @@ WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, XdgMenu* xdgMenu, QWidget
     mSearchEdit->setObjectName(QSL("MainMenuSearchEdit"));
     mSearchEdit->setClearButtonEnabled(true);
     mSearchEdit->setPlaceholderText(tr("Search..."));
+    mSearchEdit->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
 
     mMenuBox->addWidget(mCategoryWidget);
     mMenuBox->addWidget(mApplicationsStack);
@@ -85,7 +86,6 @@ WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, XdgMenu* xdgMenu, QWidget
     mMainBox->addLayout(mMenuBox);
     mMainBox->addWidget(mSearchEdit);
 
-    setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
     mRootBox->addWidget(mSideWidget);
     mRootBox->addLayout(mMainBox);
 
