@@ -77,6 +77,7 @@ WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, XdgMenu* xdgMenu, QWidget
     mSearchEdit->setAutoFillBackground(true);
     mSearchEdit->setObjectName(QSL("MainMenuSearchEdit"));
     mSearchEdit->setClearButtonEnabled(true);
+    mSearchEdit->setPlaceholderText(tr("Search..."));
 
     mMenuBox->addWidget(mCategoryWidget);
     mMenuBox->addWidget(mApplicationsStack);
