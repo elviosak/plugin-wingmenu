@@ -143,16 +143,25 @@ void WingMenuConfiguration::loadFromMenu() {
 }
 
 void WingMenuConfiguration::addDesktopFile() {
+    // When setting filter to Desktop file("*.desktop"), the desktop files aren't shown,
+    // probably because they are displayed with the "Name" field from the file 
+    //instead of the filename, so unless i find a workaround, it has to show all files.
     QString fileName = QFileDialog::getOpenFileName(this, tr("Choose Desktop File"),
         QDir::homePath(),
-        tr("Desktop file (*.desktop)"));
+        tr("All files (*)"));
 
-    XdgDesktopFile df;
-    if (!fileName.isEmpty() && df.load(fileName)) {
-        copyDesktopFile(fileName);
-        saveLeaveActions();
+    if (!fileName.isEmpty()) {
+        XdgDesktopFile df;
+        if (df.load(fileName)) {
+            copyDesktopFile(fileName);
+            saveLeaveActions();
+        }
+        else {
+            QMessageBox::warning(this, tr("Invalid desktop file"), tr("Selected file: %1 is invalid.").arg(fileName));
+        }
     }
 }
+
 
 void WingMenuConfiguration::newAction() {
     openEditDialog();
