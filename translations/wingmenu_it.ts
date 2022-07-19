@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_TW" sourcelanguage="en">
+<TS version="2.1" language="it">
 <context>
     <name>Form</name>
     <message>
@@ -11,7 +11,7 @@
     <message>
         <location filename="../wingmenuwidget.ui" line="35"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
 </context>
 <context>
@@ -19,198 +19,198 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="17"/>
         <source>WingMenu settings</source>
-        <translation type="unfinished">設定 WingMenu</translation>
+        <translation>Impostazioni di Wing Menu</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="30"/>
         <source>General</source>
-        <translation type="unfinished">一般</translation>
+        <translation>Generali</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="36"/>
         <source>Panel Button</source>
-        <translation type="unfinished">工具列按鍵</translation>
+        <translation>Pulsante</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="45"/>
         <source>Show icon:</source>
-        <translation type="unfinished">顯示圖示：</translation>
+        <translation>Mostra icona:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="73"/>
         <location filename="../wingmenuconfiguration.ui" line="116"/>
         <source>Browse</source>
-        <translation type="unfinished">瀏覽</translation>
+        <translation>Seleziona</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="87"/>
         <source>Show text:</source>
-        <translation type="unfinished">顯示文字：</translation>
+        <translation>Mostra testo:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="100"/>
         <source>Menu file</source>
-        <translation type="unfinished">選單檔案</translation>
+        <translation>File di menu</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="106"/>
         <source>File:</source>
-        <translation type="unfinished">檔案：</translation>
+        <translation>File:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="130"/>
         <source>Keyboard Shortcut</source>
-        <translation type="unfinished">鍵盤捷徑</translation>
+        <translation>Scorciatoia</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="149"/>
         <source>Click the button to record shortcut:</source>
-        <translation type="unfinished">按下按鍵以收錄快捷鍵組合：</translation>
+        <translation>Premi il pulsante per impostare la scorciatoia:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="177"/>
         <source>Display</source>
-        <translation type="unfinished">顯示</translation>
+        <translation>Disposizione</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="183"/>
         <source>Categories on the Left</source>
-        <translation type="unfinished">左側的分類目錄</translation>
+        <translation>Categorie a sinistra</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="190"/>
         <source>Search on Bottom</source>
-        <translation type="unfinished">底部的搜尋列</translation>
+        <translation>Ricerca in fondo</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="197"/>
         <source>Sidebar on the Left</source>
-        <translation type="unfinished">側邊欄靠左</translation>
+        <translation>Panello laterale a sinistra</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="204"/>
         <source>Reverse Sidebar</source>
-        <translation type="unfinished">倒轉側邊欄</translation>
+        <translation>Inverti barra laterale</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="211"/>
         <source>Applications Layout:</source>
-        <translation type="unfinished">應用程式版面：</translation>
+        <translation>Visualizzazione:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="219"/>
         <source>List (Name and Description)</source>
-        <translation type="unfinished">清單（名稱與描述）</translation>
+        <translation>Lista (nome e descrizione)</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="224"/>
         <source>List (Name only)</source>
-        <translation type="unfinished">清單（僅顯示名稱）</translation>
+        <translation>Lista (solo nome)</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="229"/>
         <source>Icons</source>
-        <translation type="unfinished">圖示</translation>
+        <translation>Icone</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="240"/>
         <source>Other</source>
-        <translation type="unfinished">其他</translation>
+        <translation>Altro</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="246"/>
         <source>Switch Category on hover</source>
-        <translation type="unfinished">滑鼠掠過時切換分類</translation>
+        <translation>Cambia categoria al passaggio del mouse</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="253"/>
         <source> ms</source>
-        <translation type="unfinished"> 毫秒</translation>
+        <translation> ms</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="256"/>
         <source>Delay: </source>
-        <translation type="unfinished">延遲： </translation>
+        <translation>Ritardo: </translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="275"/>
         <source>Ask before removing Favorite</source>
-        <translation type="unfinished">移除最愛前提醒</translation>
+        <translation>Chiedi prima di rimuovere un favorito</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="299"/>
         <source>Leave Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Azioni di uscita</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="305"/>
         <source>Customize Leave Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalizza le azioni di uscita</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="320"/>
         <source>Load from menu file</source>
-        <translation type="unfinished"></translation>
+        <translation>Carica dal file menu</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="327"/>
         <source>Add .desktop file</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi file .desktop</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="350"/>
         <source>The order displayed here ignores the option &quot;Reverse sidebar&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo ordinamento ignorerà l&apos;opzione &quot;Inverti barra laterale&quot;.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="397"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuovo</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="408"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifica</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="435"/>
         <source>Up</source>
-        <translation type="unfinished"></translation>
+        <translation>In sù</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="446"/>
         <source>Down</source>
-        <translation type="unfinished"></translation>
+        <translation>In giù</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="473"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimuovi</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="39"/>
         <source>Files are stored in: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>I file sono salvato in: %1</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="43"/>
         <source>Reset</source>
-        <translation type="unfinished">重設</translation>
+        <translation>Ripristina</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="61"/>
         <source>Choose Icon File</source>
-        <translation type="unfinished">選擇圖示檔案</translation>
+        <translation>Seleziona file di icona</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="63"/>
         <source>Images (*.png *.xpm *.svg)</source>
-        <translation type="unfinished">圖片 (*.png *.xpm *.svg)</translation>
+        <translation>Immagini (*.png *.xpm *.svg)</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="149"/>
         <source>Choose Desktop File</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleziona file desktop</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="151"/>
@@ -231,72 +231,72 @@
         <location filename="../wingmenuconfiguration.cpp" line="177"/>
         <location filename="../wingmenuconfiguration.cpp" line="211"/>
         <source>No item selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuna seleziona</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="177"/>
         <source>Please select an item to edit.</source>
-        <translation type="unfinished"></translation>
+        <translation>Per favore seleziona una voce per modificare.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="211"/>
         <source>Please select an item to remove.</source>
-        <translation type="unfinished"></translation>
+        <translation>Per favore selezione una voce per rimuovere.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="217"/>
         <source>Edit Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifica</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="233"/>
         <source>Name</source>
-        <translation type="unfinished">名稱</translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="234"/>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Icona</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="235"/>
         <source>Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Comando</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="251"/>
         <source>&quot;Name&quot; field is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il campo &quot;Nome&quot; è vuoto.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="253"/>
         <source>&quot;Icon&quot; field is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il campo &quot;icona&quot; è vuoto.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="255"/>
         <source>&quot;Command&quot; field is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il campo &quot;comando&quot; è vuoto.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="256"/>
         <source>Please fill all fields.</source>
-        <translation type="unfinished"></translation>
+        <translation>Per favore compila tutti i campi.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="309"/>
         <source>Choose Menu File</source>
-        <translation type="unfinished">選擇選單檔案</translation>
+        <translation>Seleziona file di menu</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="311"/>
         <source>Menu files (*.menu)</source>
-        <translation type="unfinished">選單檔案 (*.menu)</translation>
+        <translation>File di menu: (*.menu)</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="339"/>
         <source>Menu</source>
-        <translation type="unfinished">選單</translation>
+        <translation>Menu</translation>
     </message>
 </context>
 <context>
@@ -304,12 +304,12 @@
     <message>
         <location filename="../wingmenuplugin.cpp" line="71"/>
         <source>Menu</source>
-        <translation type="unfinished">選單</translation>
+        <translation>Menu</translation>
     </message>
     <message>
         <location filename="../wingmenuplugin.cpp" line="114"/>
         <source>Show/hide main menu</source>
-        <translation type="unfinished">顯示/隱藏主要選單</translation>
+        <translation>Mostra/nascondi menu principale</translation>
     </message>
 </context>
 <context>
@@ -322,17 +322,17 @@
     <message>
         <location filename="../wingmenuwidget.cpp" line="86"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca...</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="436"/>
         <source>Remove from Favorites</source>
-        <translation type="unfinished">自最愛移除</translation>
+        <translation>Rimuovi dai favoriti</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="440"/>
         <source>Confirm removal</source>
-        <translation type="unfinished">確認移除</translation>
+        <translation>Conferma rimozione</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="440"/>
@@ -340,92 +340,92 @@
 %1:%2
 from Favorites?
 </source>
-        <translation type="unfinished">你確定你要將
+        <translation>Si è sicuro di voler rimuovere
 %1:%2
-自最愛清單移除嗎？
+dai favoriti?
 </translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="448"/>
         <source>Add to Favorites</source>
-        <translation type="unfinished">新增至最愛</translation>
+        <translation>Aggiungi ai favoriti</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="472"/>
         <source>Add to desktop</source>
-        <translation type="unfinished">新增至桌面</translation>
+        <translation>Aggiungi al desktop</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="478"/>
         <source>Question</source>
-        <translation type="unfinished">提問</translation>
+        <translation>Domanda</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="478"/>
         <source>A file with the same name already exists.
 Do you want to overwrite it?</source>
-        <translation type="unfinished">已存在檔案名稱相同的檔案。
-您確定要覆蓋過去嗎？</translation>
+        <translation>Un file dello stesso nome esiste già.
+Sovrascrivere?</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="482"/>
         <source>Warning</source>
-        <translation type="unfinished">警告</translation>
+        <translation>Attenzione</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="482"/>
         <source>The file cannot be overwritten.</source>
-        <translation type="unfinished">該檔案無法覆寫。</translation>
+        <translation>Il file non può essere sovrascritto.</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="487"/>
         <source>Copy</source>
-        <translation type="unfinished">複製</translation>
+        <translation>Copia</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="517"/>
         <source>Favorites</source>
-        <translation type="unfinished">最愛</translation>
+        <translation>Favoriti</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="527"/>
         <source>All Applications</source>
-        <translation type="unfinished">所有檔案</translation>
+        <translation>Tutte le applicazioni</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="738"/>
         <source>Name</source>
-        <translation type="unfinished">名稱</translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="740"/>
         <source>Comment</source>
-        <translation type="unfinished">註釋</translation>
+        <translation>Commento</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="742"/>
         <source>File</source>
-        <translation type="unfinished">檔案</translation>
+        <translation>File</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="743"/>
         <source>Category</source>
-        <translation type="unfinished">分類</translation>
+        <translation>Categoria</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="744"/>
         <source>Exec</source>
-        <translation type="unfinished">執行</translation>
+        <translation>eseguibile</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="866"/>
         <source>Failed to start the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile di avviare l&apos;applicazione</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="867"/>
         <source>%1 is not a valid .desktop file</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 non è file .desktop valido</translation>
     </message>
 </context>
 </TS>
