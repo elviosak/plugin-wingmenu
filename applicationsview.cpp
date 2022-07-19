@@ -96,7 +96,7 @@ void ApplicationsView::setAppLayout(AppLayout::Layout layout)
         setGridSize(grid);
         setViewMode(QListView::ViewMode::IconMode);
         setWordWrap(true);
-        w = grid.width() * 3 + verticalScrollBar()->sizeHint().width() + 4;
+        w = grid.width() * 3 + verticalScrollBar()->sizeHint().width() + 16;
         setMovement(QListView::Movement::Static);
         break;
     }
