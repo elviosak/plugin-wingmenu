@@ -75,6 +75,7 @@ WingMenuConfiguration::WingMenuConfiguration(PluginSettings& settings,
     connect(ui->downActionPB, &QPushButton::clicked, this, &WingMenuConfiguration::downAction);
     connect(ui->removeActionPB, &QPushButton::clicked, this, &WingMenuConfiguration::removeAction);
     connect(ui->leaveActionsView, &QListView::activated, this, &WingMenuConfiguration::actionActivated);
+    connect(mLeaveActionsModel, &QStandardItemModel::rowsRemoved, this, &WingMenuConfiguration::saveLeaveActions);
 }
 void WingMenuConfiguration::actionActivated(const QModelIndex& index) {
     auto item = mLeaveActionsModel->itemFromIndex(index);
@@ -102,6 +103,7 @@ void WingMenuConfiguration::copyDesktopFile(const QString& fileName)
         df.save(newFile);
         auto item = createItem(newFile);
         mLeaveActionsModel->appendRow(item);
+
     }
 }
 
@@ -181,20 +183,22 @@ void WingMenuConfiguration::editAction() {
 void WingMenuConfiguration::upAction() {
     auto current = ui->leaveActionsView->currentIndex();
     if (current.isValid() && current.row() > 0) {
-        auto item = mLeaveActionsModel->takeRow(current.row()).first();
-        mLeaveActionsModel->insertRow(current.row() - 1, item);
-        ui->leaveActionsView->setCurrentIndex(item->index());
-        saveLeaveActions();
+        int row = current.row();
+        mLeaveActionsModel->insertRow(row - 1, mLeaveActionsModel->takeItem(row));
+        mLeaveActionsModel->removeRow(row + 1);
+        ui->leaveActionsView->setCurrentIndex(mLeaveActionsModel->index(row - 1, 0));
+        // saveLeaveActions();
     }
 }
 
 void WingMenuConfiguration::downAction() {
     auto current = ui->leaveActionsView->currentIndex();
     if (current.isValid() && current.row() < mLeaveActionsModel->rowCount() - 1) {
-        auto item = mLeaveActionsModel->takeRow(current.row()).first();
-        mLeaveActionsModel->insertRow(current.row() + 1, item);
-        ui->leaveActionsView->setCurrentIndex(item->index());
-        saveLeaveActions();
+        int row = current.row();
+        mLeaveActionsModel->insertRow(row + 2, mLeaveActionsModel->takeItem(row));
+        mLeaveActionsModel->removeRow(row);
+        ui->leaveActionsView->setCurrentIndex(mLeaveActionsModel->index(row + 1, 0));
+        // saveLeaveActions();
     }
 }
 
@@ -205,7 +209,7 @@ void WingMenuConfiguration::removeAction() {
         QFile file(item->data().toString());
         file.remove();
         mLeaveActionsModel->removeRow(index.row());
-        saveLeaveActions();
+        // saveLeaveActions();
     }
     else {
         QMessageBox::warning(this, tr("No item selected"), tr("Please select an item to remove."));
@@ -266,7 +270,6 @@ void WingMenuConfiguration::openEditDialog(const QString& fileName) {
 void WingMenuConfiguration::saveDesktopFile(const QString& name, const QString& icon, const QString& exec, const QString& fileName)
 {
     if (fileName.isEmpty()) {
-
         auto newFile = newFileName();
         XdgDesktopFile df(XdgDesktopFile::ApplicationType, name, exec);
         df.setValue(QSL("Icon"), icon);
