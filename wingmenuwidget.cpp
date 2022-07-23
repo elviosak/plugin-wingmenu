@@ -431,19 +431,7 @@ void WingMenuWidget::showCustomMenu(const QPoint& pos)
     QIcon icon;
     QString text;
     QAction* a;
-    if (isFavorites) {
-        icon = XdgIcon::fromTheme(QSL("favorites"));
-        text = tr("Remove from Favorites");
-        a = menu->addAction(icon, text);
-        connect(a, &QAction::triggered, this, [this, df, index] {
-            if (mAskFavoriteRemove) {
-                QMessageBox::StandardButton btn = QMessageBox::question(nullptr, tr("Confirm removal"), tr("Are you sure you want to remove\n%1:%2\nfrom Favorites?\n").arg(df.name(), df.fileName()));
-                if (btn != QMessageBox::Yes)
-                    return;
-            }
-            removeFromFavorites(index); });
-    }
-    else {
+    if (isFavorites == false) {
         icon = XdgIcon::fromTheme(QSL("favorites"));
         text = tr("Add to Favorites");
         a = menu->addAction(icon, text);
@@ -451,14 +439,14 @@ void WingMenuWidget::showCustomMenu(const QPoint& pos)
             a->setEnabled(false);
         }
         else {
-            connect(a, &QAction::triggered, this, [this, df] {
-                addItemToFavorites(df);
-                saveFavoritesList();
+            connect(a, &QAction::triggered, this,
+                [this, df] {
+                    addItemToFavorites(df);
+                    saveFavoritesList();
                 });
         }
+        menu->addSeparator();
     }
-
-    menu->addSeparator();
     if (df.actions().count() > 0 && df.type() == XdgDesktopFile::Type::ApplicationType) {
         for (int i = 0; i < df.actions().count(); ++i) {
             QString actionString(df.actions().at(i));
@@ -485,11 +473,48 @@ void WingMenuWidget::showCustomMenu(const QPoint& pos)
         }
         QFile::copy(df.fileName(), desktopFile); });
     a = menu->addAction(XdgIcon::fromTheme(QLatin1String("edit-copy")), tr("Copy"));
-    connect(a, &QAction::triggered, this, [df] {
-        QClipboard* clipboard = QApplication::clipboard();
-        QMimeData* data = new QMimeData();
-        data->setData(QStringLiteral("text/uri-list"), QUrl::fromLocalFile(df.fileName()).toEncoded() + QByteArray("\r\n"));
-        clipboard->setMimeData(data); });
+    connect(a, &QAction::triggered, this,
+        [df] {
+            QClipboard* clipboard = QApplication::clipboard();
+            QMimeData* data = new QMimeData();
+            data->setData(QStringLiteral("text/uri-list"), QUrl::fromLocalFile(df.fileName()).toEncoded() + QByteArray("\r\n"));
+            clipboard->setMimeData(data);
+        });
+    if (isFavorites) {
+
+        menu->addSeparator();
+        a = menu->addAction(XdgIcon::fromTheme(QSL("go-up")), tr("Move Up"));
+        if (index.row() == 0) {
+            a->setDisabled(true);
+        }
+        else {
+            connect(a, &QAction::triggered, this,
+                [this, index] {
+                    this->moveFavoriteUp(index.row());
+                });
+        }
+        a = menu->addAction(XdgIcon::fromTheme(QSL("go-down")), tr("Move Down"));
+        if (index.row() == mFavoritesModel->rowCount() - 1) {
+            a->setDisabled(true);
+        }
+        else {
+            connect(a, &QAction::triggered, this,
+                [this, index] {
+                    this->moveFavoriteDown(index.row());
+                });
+        }
+        menu->addSeparator();
+        a = menu->addAction(XdgIcon::fromTheme(QSL("favorites")), tr("Remove from Favorites"));
+        connect(a, &QAction::triggered, this,
+            [this, df, index] {
+                if (mAskFavoriteRemove) {
+                    QMessageBox::StandardButton btn = QMessageBox::question(nullptr, tr("Confirm removal"), tr("Are you sure you want to remove\n%1:%2\nfrom Favorites?\n").arg(df.name(), df.fileName()));
+                    if (btn != QMessageBox::Yes)
+                        return;
+                }
+                removeFromFavorites(index);
+            });
+    }
     menu->exec(mapToGlobal(pos));
 }
 
@@ -517,8 +542,7 @@ void WingMenuWidget::buildMenu()
     addCategoryButton(favIcon, tr("Favorites"), QSL("Favorites"));
     for (const QString& fav : qAsConst(mFavoritesList)) {
         XdgDesktopFile df;
-        df.load(fav);
-        if (df.isValid())
+        if (df.load(fav))
             addItemToFavorites(df);
     }
 
@@ -573,9 +597,7 @@ void WingMenuWidget::connectSignals()
 
 QToolButton* WingMenuWidget::createSideButton(const XdgDesktopFile& df)
 {
-    auto icon = df.icon();
-    if (icon.isNull())
-        icon = XdgIcon::defaultApplicationIcon();
+    auto icon = df.icon(XdgIcon::defaultApplicationIcon());
     auto a = new QAction(icon, df.name());
     a->setToolTip(df.name());
     a->setData(df.fileName());
@@ -705,15 +727,15 @@ void WingMenuWidget::addItem(const XdgDesktopFile& df, const QString& category)
     auto name = df.name();
     auto list = mApplicationsModel->findItems(name);
     for (auto i = list.cbegin(); i != list.cend(); ++i) {
+        // If desktop file is already present, add category instead of creating a new item
         if ((*i)->data(DataType::DesktopFile) == df.fileName()) {
             auto cat = (*i)->data(DataType::Category).toString();
             (*i)->setData(QSL("%1;%2").arg(cat, category), DataType::Category);
-            setItemToolTip(*i);
             return;
         }
     }
 
-    auto item = new QStandardItem(df.icon(), name);
+    auto item = new QStandardItem(df.icon(XdgIcon::defaultApplicationIcon()), name);
     auto comment = df.comment();
     if (comment.isEmpty())
         comment = df.localizedValue(QSL("genericName")).toString();
@@ -743,6 +765,66 @@ void WingMenuWidget::setItemToolTip(QStandardItem* item)
             tr("Category"), item->data(DataType::Category).toString(),
             tr("Exec"), item->data(DataType::Exec).toString());
     item->setToolTip(tooltip);
+}
+
+void WingMenuWidget::addItemToFavorites(const XdgDesktopFile& df)
+{
+    auto name = df.name();
+    auto item = new QStandardItem(df.icon(XdgIcon::defaultApplicationIcon()), name);
+    auto comment = df.comment();
+    if (comment.isEmpty())
+        comment = df.localizedValue(QSL("genericName")).toString();
+    auto category = QSL("Favorites");
+    auto exec = df.value(QSL("Exec")).toString();
+    item->setDropEnabled(false);
+    item->setData(comment, DataType::Comment);
+    item->setData(category, DataType::Category);
+    item->setData(df.fileName(), DataType::DesktopFile);
+    item->setData(exec, DataType::Exec);
+
+    setItemToolTip(item);
+    mFavoritesModel->appendRow(item);
+    mFavoritesList.append(df.fileName());
+}
+
+void WingMenuWidget::saveFavoritesList()
+{
+    if (mFavoritesList.count() == 0)
+        mFavoritesInfo->show();
+    else
+        mFavoritesInfo->hide();
+    mPlugin->settings()->setValue(QSL("favoritesList"), QVariant::fromValue(mFavoritesList));
+}
+
+void WingMenuWidget::moveFavoriteUp(int index)
+{
+    if (index > 0 && index < mFavoritesModel->rowCount()) {
+        mFavoritesModel->insertRow(index - 1, mFavoritesModel->takeItem(index));
+        mFavoritesModel->removeRow(index + 1);
+    }
+}
+
+void WingMenuWidget::moveFavoriteDown(int index)
+{
+    if (index >= 0 && index < mFavoritesModel->rowCount()) {
+        mFavoritesModel->insertRow(index + 2, mFavoritesModel->takeItem(index));
+        mFavoritesModel->removeRow(index);
+    }
+}
+
+void WingMenuWidget::removeFromFavorites(const QModelIndex& index)
+{
+    auto row = index.row();
+    mFavoritesModel->removeRow(row);
+}
+
+void WingMenuWidget::favoritesRowRemoved()
+{
+    mFavoritesList.clear();
+    for (int i = 0; i < mFavoritesModel->rowCount(); ++i) {
+        mFavoritesList << mFavoritesModel->item(i)->data(DataType::DesktopFile).toString();
+    }
+    saveFavoritesList();
 }
 
 void WingMenuWidget::settingsChanged()
@@ -902,54 +984,6 @@ void WingMenuWidget::hoverTimeout()
         mHoveredAction->activate(QAction::ActionEvent::Trigger);
 }
 
-void WingMenuWidget::addItemToFavorites(const XdgDesktopFile& df)
-{
-    auto name = df.name();
-    auto item = new QStandardItem(df.icon(), name);
-    auto comment = df.comment();
-    if (comment.isEmpty())
-        comment = df.localizedValue(QSL("genericName")).toString();
-    auto category = QSL("Favorites");
-    auto exec = df.value(QSL("Exec")).toString();
-    item->setDropEnabled(false);
-    item->setData(comment, DataType::Comment);
-    item->setData(category, DataType::Category);
-    item->setData(df.fileName(), DataType::DesktopFile);
-    item->setData(exec, DataType::Exec);
-
-    setItemToolTip(item);
-    mFavoritesModel->appendRow(item);
-    mFavoritesList.append(df.fileName());
-}
-
-void WingMenuWidget::saveFavoritesList()
-{
-    if (mFavoritesList.count() == 0)
-        mFavoritesInfo->show();
-    else
-        mFavoritesInfo->hide();
-    mPlugin->settings()->setValue(QSL("favoritesList"), QVariant::fromValue(mFavoritesList));
-}
-
-void WingMenuWidget::removeFromFavorites(const QModelIndex& index)
-{
-    auto row = index.row();
-    mFavoritesModel->removeRow(row);
-}
-
-void WingMenuWidget::favoritesRowRemoved()
-{
-    auto count = mFavoritesModel->rowCount();
-    QStringList newList;
-    for (int i = 0; i < count; ++i) {
-        auto item = mFavoritesModel->item(i);
-        auto fileName = item->data(DataType::DesktopFile).toString();
-        if (!fileName.isEmpty())
-            newList << fileName;
-    }
-    mFavoritesList = newList;
-    saveFavoritesList();
-}
 // Accepting click release to stop propagating to QMenu,
 // so it doesn't close when clicking on empty space
 void WingMenuWidget::mouseReleaseEvent(QMouseEvent* event)
