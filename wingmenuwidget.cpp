@@ -442,6 +442,7 @@ void WingMenuWidget::showCustomMenu(const QPoint& pos)
             connect(a, &QAction::triggered, this,
                 [this, df] {
                     addItemToFavorites(df);
+                    mFavoritesList.append(df.fileName());
                     saveFavoritesList();
                 });
         }
@@ -520,6 +521,7 @@ void WingMenuWidget::showCustomMenu(const QPoint& pos)
 
 void WingMenuWidget::buildMenu()
 {
+    mFavoritesList = mPlugin->settings()->value(QSL("favoritesList"), {}).toStringList();
     mApplicationsModel->clear();
     mFavoritesModel->clear();
     mOtherActions.clear();
@@ -784,7 +786,6 @@ void WingMenuWidget::addItemToFavorites(const XdgDesktopFile& df)
 
     setItemToolTip(item);
     mFavoritesModel->appendRow(item);
-    mFavoritesList.append(df.fileName());
 }
 
 void WingMenuWidget::saveFavoritesList()
@@ -829,10 +830,6 @@ void WingMenuWidget::favoritesRowRemoved()
 
 void WingMenuWidget::settingsChanged()
 {
-    if (mFavoritesList.isEmpty())
-        mFavoritesList = (mPlugin->settings()->value(QSL("favoritesList"), {})).toStringList();
-
-
     mCategoryLeft = mPlugin->settings()->value(QSL("categoryLeft"), true).toBool();
     mSearchBottom = mPlugin->settings()->value(QSL("searchBottom"), true).toBool();
     mSidebarLeft = mPlugin->settings()->value(QSL("sidebarLeft"), true).toBool();
