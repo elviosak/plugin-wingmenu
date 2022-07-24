@@ -224,11 +224,11 @@ void WingMenuConfiguration::openEditDialog(const QString& fileName) {
     auto iconLine = new QLineEdit;
     auto execLine = new QLineEdit;
     if (!fileName.isEmpty()) {
-        XdgDesktopFile d;
-        if (d.load(fileName)) {
-            nameLine->setText(d.name());
-            iconLine->setText(d.iconName());
-            execLine->setText(d.expandExecString().join(QLatin1Char(' ')));
+        XdgDesktopFile df;
+        if (df.load(fileName)) {
+            nameLine->setText(df.name());
+            iconLine->setText(df.iconName());
+            execLine->setText(df.value(QSL("Exec")).toString());
         }
     }
 
