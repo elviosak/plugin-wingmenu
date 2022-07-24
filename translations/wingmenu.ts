@@ -386,37 +386,37 @@ Do you want to overwrite it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="762"/>
+        <location filename="../wingmenuwidget.cpp" line="776"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="764"/>
+        <location filename="../wingmenuwidget.cpp" line="778"/>
         <source>Comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="766"/>
+        <location filename="../wingmenuwidget.cpp" line="780"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="767"/>
+        <location filename="../wingmenuwidget.cpp" line="781"/>
         <source>Category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="768"/>
+        <location filename="../wingmenuwidget.cpp" line="782"/>
         <source>Exec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="945"/>
+        <location filename="../wingmenuwidget.cpp" line="959"/>
         <source>Failed to start the application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="946"/>
+        <location filename="../wingmenuwidget.cpp" line="960"/>
         <source>%1 is not a valid .desktop file</source>
         <translation type="unfinished"></translation>
     </message>

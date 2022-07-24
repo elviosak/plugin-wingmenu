@@ -390,37 +390,37 @@ Do you want to overwrite it?</source>
         <translation type="unfinished">所有檔案</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="762"/>
+        <location filename="../wingmenuwidget.cpp" line="776"/>
         <source>Name</source>
         <translation type="unfinished">名稱</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="764"/>
+        <location filename="../wingmenuwidget.cpp" line="778"/>
         <source>Comment</source>
         <translation type="unfinished">註釋</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="766"/>
+        <location filename="../wingmenuwidget.cpp" line="780"/>
         <source>File</source>
         <translation type="unfinished">檔案</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="767"/>
+        <location filename="../wingmenuwidget.cpp" line="781"/>
         <source>Category</source>
         <translation type="unfinished">分類</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="768"/>
+        <location filename="../wingmenuwidget.cpp" line="782"/>
         <source>Exec</source>
         <translation type="unfinished">執行</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="945"/>
+        <location filename="../wingmenuwidget.cpp" line="959"/>
         <source>Failed to start the application</source>
         <translation type="unfinished">無法啟動應用程式</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="946"/>
+        <location filename="../wingmenuwidget.cpp" line="960"/>
         <source>%1 is not a valid .desktop file</source>
         <translation type="unfinished">%1 不是合法的 .desktop 檔案</translation>
     </message>

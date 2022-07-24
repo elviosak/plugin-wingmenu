@@ -397,37 +397,37 @@ Sovrascrivere?</translation>
         <translation>Tutte le applicazioni</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="762"/>
+        <location filename="../wingmenuwidget.cpp" line="776"/>
         <source>Name</source>
         <translation>Nome</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="764"/>
+        <location filename="../wingmenuwidget.cpp" line="778"/>
         <source>Comment</source>
         <translation>Commento</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="766"/>
+        <location filename="../wingmenuwidget.cpp" line="780"/>
         <source>File</source>
         <translation>File</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="767"/>
+        <location filename="../wingmenuwidget.cpp" line="781"/>
         <source>Category</source>
         <translation>Categoria</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="768"/>
+        <location filename="../wingmenuwidget.cpp" line="782"/>
         <source>Exec</source>
         <translation>eseguibile</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="945"/>
+        <location filename="../wingmenuwidget.cpp" line="959"/>
         <source>Failed to start the application</source>
         <translation>Impossibile di avviare l&apos;applicazione</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="946"/>
+        <location filename="../wingmenuwidget.cpp" line="960"/>
         <source>%1 is not a valid .desktop file</source>
         <translation>%1 non è file .desktop valido</translation>
     </message>

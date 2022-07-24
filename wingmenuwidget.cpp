@@ -635,6 +635,20 @@ void WingMenuWidget::buildSideButtons()
             mSideBox->insertWidget(index, tb);
         }
     }
+    // Always add LXQt Configuration Center if session is LXQt,
+    // lxqt-config.desktop exists and it wasn't added before
+    auto env = QString::fromUtf8(qgetenv("XDG_SESSION_DESKTOP"));
+    if (env == QSL("LXQt")) {
+        auto configFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QSL("lxqt-config.desktop"));
+        if (!configFile.isEmpty() && !mOtherActions.contains(configFile)) {
+            XdgDesktopFile df;
+            if (df.load(configFile)) {
+                auto tb = createSideButton(df);
+                int index = mSideBox->indexOf(mSideSpacer);
+                mSideBox->insertWidget(index, tb);
+            }
+        }
+    }
     if (mCustomizeLeave) {
         for (const auto& option : qAsConst(mCustomActions)) {
             XdgDesktopFile df;
