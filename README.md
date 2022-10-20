@@ -43,7 +43,7 @@ lxqt-build-tools qt5-base kwindowsystem qt5-x11extras
 
 ```bash
 # clone repo
-git clone https://github.com/slidinghotdog/plugin-wingmenu.git
+git clone https://github.com/elviosak/plugin-wingmenu.git
 
 # cd into folder
 cd plugin-wingmenu
