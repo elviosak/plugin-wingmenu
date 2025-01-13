@@ -10,14 +10,14 @@
 #include <lxqtglobalkeys.h>
 
 WingMenuPlugin::WingMenuPlugin(const ILXQtPanelPluginStartupInfo& startupInfo)
-    : QObject(),
-    ILXQtPanelPlugin(startupInfo),
-    mShortcut(nullptr),
-    mMenu(nullptr),
-    mMenuWidget(nullptr),
-    mMenuAction(nullptr),
-    mMenuFile(QString()),
-    mXdgMenu(new XdgMenu())
+    : QObject()
+    , ILXQtPanelPlugin(startupInfo)
+    , mShortcut(nullptr)
+    , mMenu(nullptr)
+    , mMenuWidget(nullptr)
+    , mMenuAction(nullptr)
+    , mMenuFile(QString())
+    , mXdgMenu(new XdgMenu())
 {
     auto logDir = settings()->value(QSL("logDir"), QString()).toString();
     mXdgMenu->setEnvironments(QStringList() << QSL("X-LXQT") << QSL("LXQt"));
@@ -39,15 +39,20 @@ WingMenuPlugin::~WingMenuPlugin() = default;
 
 void WingMenuPlugin::buildMenu()
 {
-    if (nullptr != mMenu)
+    if (nullptr != mMenu) {
         mMenu->deleteLater();
+    }
 
-    if (nullptr != mMenuWidget)
+    if (nullptr != mMenuWidget) {
         mMenuWidget->deleteLater();
+    }
 
     mMenu = new QMenu(mWidget);
     mMenu->setAttribute(Qt::WA_AlwaysShowToolTips);
     mMenu->setAttribute(Qt::WA_TranslucentBackground);
+
+    mMenu->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | Qt::Popup);
+
     mMenuWidget = new WingMenuWidget(this, mXdgMenu);
     mMenuWidget->ensurePolished();
 
@@ -60,7 +65,6 @@ void WingMenuPlugin::buildMenu()
     connect(mMenuWidget, &WingMenuWidget::hideMenu, this, &WingMenuPlugin::hideMenu);
     connect(mMenu, &QMenu::aboutToHide, mMenuWidget, &WingMenuWidget::onHide);
     connect(mMenu, &QMenu::aboutToShow, mMenuWidget, &WingMenuWidget::onShow);
-
 }
 
 void WingMenuPlugin::settingsChanged()
@@ -97,13 +101,13 @@ void WingMenuPlugin::settingsChanged()
         }
     }
 
-
     if ((mAppLayout != appLayout) || (mMenuFile != menuFile)) {
         mAppLayout = appLayout;
         mMenuFile = menuFile;
         bool res = mXdgMenu->read(mMenuFile);
-        if (!res)
+        if (!res) {
             QMessageBox::warning(nullptr, QSL("Parse error"), mXdgMenu->errorString());
+        }
         buildMenu();
     }
     mMenuWidget->settingsChanged();
@@ -111,19 +115,21 @@ void WingMenuPlugin::settingsChanged()
 
 void WingMenuPlugin::setupShortcut()
 {
-    mShortcut = GlobalKeyShortcut::Client::instance()->addAction(QString{}, QSL("/panel/%1/show_hide").arg(settings()->group()), tr("Show/hide main menu"), this);
+    mShortcut = GlobalKeyShortcut::Client::instance()->addAction(QString {}, QSL("/panel/%1/show_hide").arg(settings()->group()), tr("Show/hide main menu"), this);
     if (mShortcut) {
         connect(mShortcut, &GlobalKeyShortcut::Action::registrationFinished, this, [this] {
-            if (mShortcut->shortcut().isEmpty())
-                mShortcut->changeShortcut(DEFAULT_SHORTCUT); });
+            if (mShortcut->shortcut().isEmpty()){
+                mShortcut->changeShortcut(DEFAULT_SHORTCUT);
+} });
         connect(mShortcut, &GlobalKeyShortcut::Action::activated, this, [this] { showHideMenu(); });
     }
 }
 
 void WingMenuPlugin::showMenu()
 {
-    if (!mMenu)
+    if (!mMenu) {
         buildMenu();
+    }
     willShowWindow(mMenu);
     mMenu->popup(calculatePopupWindowPos(mMenu->sizeHint()).topLeft());
     mMenuWidget->focusLineEdit();
@@ -136,24 +142,30 @@ void WingMenuPlugin::hideMenu()
 
 void WingMenuPlugin::showHideMenu()
 {
-    if (!mMenu)
+    if (!mMenu) {
         return;
+    }
 
-    if (mMenu->isVisible())
+    if (mMenu->isVisible()) {
         hideMenu();
-    else
+    }
+    else {
         showMenu();
+    }
 }
 
 void WingMenuPlugin::showHideMenuDelayed()
 {
-    if (!mMenu)
+    if (!mMenu) {
         return;
+    }
 
-    if (mMenu->isVisible())
+    if (mMenu->isVisible()) {
         hideMenu();
-    else
+    }
+    else {
         QTimer::singleShot(200, this, &WingMenuPlugin::showMenu);
+    }
 }
 
 void WingMenuPlugin::realign()

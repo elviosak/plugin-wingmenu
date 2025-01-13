@@ -1,30 +1,4 @@
-/* BEGIN_COMMON_COPYRIGHT_HEADER
- * (c)LGPL2+
- *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt-project.org/
- *
- * Copyright: 2021 LXQt team
- *
- * This program or library is free software; you can redistribute it
- * and/or modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General
- * Public License along with this library; if not, write to the
- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301 USA
- *
- * END_COMMON_COPYRIGHT_HEADER */
-
 #include "applicationsview.h"
- // #include "itemdescriptiondelegate.h"
 
 #include <QMenu>
 #include <QProxyStyle>
@@ -41,17 +15,19 @@ public:
     using QProxyStyle::QProxyStyle;
     int styleHint(StyleHint hint, const QStyleOption* option = nullptr, const QWidget* widget = nullptr, QStyleHintReturn* returnData = nullptr) const override
     {
-        if (hint == QStyle::SH_ItemView_ActivateItemOnSingleClick)
+        if (hint == QStyle::SH_ItemView_ActivateItemOnSingleClick) {
             return 1;
+        }
         return QProxyStyle::styleHint(hint, option, widget, returnData);
     }
 };
 
 ApplicationsView::ApplicationsView(int iconSize, AppLayout::Layout appLayout, QWidget* parent)
-    : QListView(parent), mIconSize(iconSize),
-    mAppLayout(appLayout),
-    mDelegate(new ItemDescriptionDelegate),
-    mDidDrag(false)
+    : QListView(parent)
+    , mIconSize(iconSize)
+    , mAppLayout(appLayout)
+    , mDelegate(new ItemDescriptionDelegate)
+    , mDidDrag(false)
 {
     setMouseTracking(true);
     setDragDropMode(QListView::DragOnly);
@@ -118,15 +94,22 @@ void ApplicationsView::mousePressEvent(QMouseEvent* event)
 
 void ApplicationsView::mouseReleaseEvent(QMouseEvent* e)
 {
-    if ((e->button() == Qt::LeftButton) && (e->pos() - mDragStartPosition).manhattanLength() < QApplication::startDragDistance() && !mDidDrag) {
+    if (e->button() == Qt::LeftButton
+        && (e->pos() - mDragStartPosition).manhattanLength() < QApplication::startDragDistance()
+        && !mDidDrag) {
 
         auto index = indexAt(mDragStartPosition);
         auto index2 = indexAt(e->pos());
-        if (index == index2)
+        if (index == index2) {
             emit indexClicked(index);
+        }
+        e->accept();
+        return;
     }
+    e->ignore();
 }
 
+// maybe TODO: drag and drop to reorder favorites
 void ApplicationsView::dragEnterEvent(QDragEnterEvent* e)
 {
     QAbstractItemView::dragEnterEvent(e);
@@ -144,9 +127,10 @@ void ApplicationsView::dropEvent(QDropEvent* e)
     QAbstractItemView::dropEvent(e);
 }
 
-void ApplicationsView::keyPressEvent(QKeyEvent* e) {
+void ApplicationsView::keyPressEvent(QKeyEvent* e)
+{
     // ignore everything and let event propagate to WingMenuMenu and then sent to WingMenuWidget
-    // everything is handled in WingMenuWidget::onKeyPressed 
+    // everything is handled in WingMenuWidget::onKeyPressed
     e->ignore();
 }
 
@@ -165,15 +149,18 @@ void ApplicationsView::mouseMoveEvent(QMouseEvent* event)
     //        QListView::mouseMoveEvent(event);
     //        return;
     //    }
-    if (!(event->buttons() & Qt::LeftButton))
+    if (!(event->buttons() & Qt::LeftButton)) {
         return;
+    }
 
-    if ((event->pos() - mDragStartPosition).manhattanLength() < QApplication::startDragDistance())
+    if ((event->pos() - mDragStartPosition).manhattanLength() < QApplication::startDragDistance()) {
         return;
+    }
     mDidDrag = true;
     auto index = indexAt(mDragStartPosition);
-    if (!index.isValid())
+    if (!index.isValid()) {
         return;
+    }
 
     QMimeData* mimeData = new QMimeData();
     //    if (mFavorites) {

@@ -14,8 +14,9 @@ void ItemDescriptionDelegate::setAppLayout(AppLayout::Layout appLayout)
 void ItemDescriptionDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
     // Icons and regular list are painted with default settings
-    if (mAppLayout != AppLayout::ListNameAndDescription)
+    if (mAppLayout != AppLayout::ListNameAndDescription) {
         return QStyledItemDelegate::paint(painter, option, index);
+    }
 
     // Saving and restoring painter is needed because the
     // same painter is used for the next items
@@ -70,16 +71,18 @@ void ItemDescriptionDelegate::paint(QPainter* painter, const QStyleOptionViewIte
 
 QSize ItemDescriptionDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
-    if (mAppLayout == AppLayout::Icons)
+    if (mAppLayout == AppLayout::Icons) {
         return QStyledItemDelegate::sizeHint(option, index);
+    }
 
     auto oldSize = QStyledItemDelegate::sizeHint(option, index);
     auto fm = option.fontMetrics;
     int fontHeight = fm.height();
 
     // When layout is ListNameOnly the height is "fixed" so it doesn't shrink when there's no icon
-    if (mAppLayout == AppLayout::ListNameOnly)
+    if (mAppLayout == AppLayout::ListNameOnly) {
         return QSize(oldSize.width(), 2 * fontHeight);
+    }
 
     int spacing = qFloor(fontHeight / 3);
     // We consider 2  * "font height" as the width alocated by Qt for icon and padding,

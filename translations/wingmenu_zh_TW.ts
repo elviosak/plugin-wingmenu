@@ -190,73 +190,73 @@
         <translation type="unfinished">圖片 (*.png *.xpm *.svg)</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="151"/>
+        <location filename="../wingmenuconfiguration.cpp" line="156"/>
         <source>Choose Desktop File</source>
         <translation type="unfinished">選擇桌面檔案</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="153"/>
+        <location filename="../wingmenuconfiguration.cpp" line="158"/>
         <source>All files (*)</source>
         <translation type="unfinished">所有檔案 (*)</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="162"/>
+        <location filename="../wingmenuconfiguration.cpp" line="166"/>
         <source>Invalid desktop file</source>
         <translation type="unfinished">無效的桌面檔</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="162"/>
+        <location filename="../wingmenuconfiguration.cpp" line="166"/>
         <source>Selected file: %1 is invalid.</source>
         <translation type="unfinished">%1 是無效檔案。</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="179"/>
-        <location filename="../wingmenuconfiguration.cpp" line="215"/>
+        <location filename="../wingmenuconfiguration.cpp" line="183"/>
+        <location filename="../wingmenuconfiguration.cpp" line="218"/>
         <source>No item selected</source>
         <translation type="unfinished">尚未選擇物件</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="179"/>
+        <location filename="../wingmenuconfiguration.cpp" line="183"/>
         <source>Please select an item to edit.</source>
         <translation type="unfinished">請選擇欲編輯的物件。</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="215"/>
+        <location filename="../wingmenuconfiguration.cpp" line="218"/>
         <source>Please select an item to remove.</source>
         <translation type="unfinished">請選擇欲移除的物件。</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="221"/>
+        <location filename="../wingmenuconfiguration.cpp" line="226"/>
         <source>Edit Action</source>
         <translation type="unfinished">編輯行為</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="237"/>
+        <location filename="../wingmenuconfiguration.cpp" line="244"/>
         <source>Name</source>
         <translation type="unfinished">名稱</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="238"/>
+        <location filename="../wingmenuconfiguration.cpp" line="245"/>
         <source>Icon</source>
         <translation type="unfinished">圖示</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="239"/>
+        <location filename="../wingmenuconfiguration.cpp" line="246"/>
         <source>Command</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="255"/>
+        <location filename="../wingmenuconfiguration.cpp" line="264"/>
         <source>&quot;Name&quot; field is empty.</source>
         <translation type="unfinished">「名稱」欄位不得為空。</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="257"/>
+        <location filename="../wingmenuconfiguration.cpp" line="267"/>
         <source>&quot;Icon&quot; field is empty.</source>
         <translation type="unfinished">「圖示」欄位不得為空。</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="259"/>
+        <location filename="../wingmenuconfiguration.cpp" line="270"/>
         <source>&quot;Command&quot; field is empty.</source>
         <translation type="unfinished">「指令」欄位不得為空。</translation>
     </message>
@@ -266,22 +266,22 @@
         <translation type="unfinished">檔案除存在：%1</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="260"/>
+        <location filename="../wingmenuconfiguration.cpp" line="272"/>
         <source>Please fill all fields.</source>
         <translation type="unfinished">請填入所有欄位。</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="312"/>
+        <location filename="../wingmenuconfiguration.cpp" line="323"/>
         <source>Choose Menu File</source>
         <translation type="unfinished">選擇選單檔案</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="314"/>
+        <location filename="../wingmenuconfiguration.cpp" line="325"/>
         <source>Menu files (*.menu)</source>
         <translation type="unfinished">選單檔案 (*.menu)</translation>
     </message>
     <message>
-        <location filename="../wingmenuconfiguration.cpp" line="342"/>
+        <location filename="../wingmenuconfiguration.cpp" line="354"/>
         <source>Menu</source>
         <translation type="unfinished">選單</translation>
     </message>
@@ -289,12 +289,12 @@
 <context>
     <name>WingMenuPlugin</name>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="71"/>
+        <location filename="../wingmenuplugin.cpp" line="75"/>
         <source>Menu</source>
         <translation type="unfinished">選單</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="114"/>
+        <location filename="../wingmenuplugin.cpp" line="118"/>
         <source>Show/hide main menu</source>
         <translation type="unfinished">顯示/隱藏主要選單</translation>
     </message>
@@ -302,37 +302,37 @@
 <context>
     <name>WingMenuWidget</name>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="68"/>
+        <location filename="../wingmenuwidget.cpp" line="69"/>
         <source>Favorites list is empty, add items with the right-click menu from items on another category.</source>
         <translation type="unfinished">空白的最愛清單，請從其他分類的物件的右鍵選單中新增。</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="86"/>
+        <location filename="../wingmenuwidget.cpp" line="87"/>
         <source>Search...</source>
         <translation type="unfinished">搜尋…</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="487"/>
+        <location filename="../wingmenuwidget.cpp" line="540"/>
         <source>Move Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="497"/>
+        <location filename="../wingmenuwidget.cpp" line="550"/>
         <source>Move Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="508"/>
+        <location filename="../wingmenuwidget.cpp" line="561"/>
         <source>Remove from Favorites</source>
         <translation type="unfinished">自最愛移除</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="512"/>
+        <location filename="../wingmenuwidget.cpp" line="565"/>
         <source>Confirm removal</source>
         <translation type="unfinished">確認移除</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="512"/>
+        <location filename="../wingmenuwidget.cpp" line="565"/>
         <source>Are you sure you want to remove
 %1:%2
 from Favorites?
@@ -343,84 +343,84 @@ from Favorites?
 </translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="436"/>
+        <location filename="../wingmenuwidget.cpp" line="488"/>
         <source>Add to Favorites</source>
         <translation type="unfinished">新增至最愛</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="461"/>
+        <location filename="../wingmenuwidget.cpp" line="513"/>
         <source>Add to desktop</source>
         <translation type="unfinished">新增至桌面</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="467"/>
+        <location filename="../wingmenuwidget.cpp" line="519"/>
         <source>Question</source>
         <translation type="unfinished">提問</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="467"/>
+        <location filename="../wingmenuwidget.cpp" line="519"/>
         <source>A file with the same name already exists.
 Do you want to overwrite it?</source>
         <translation type="unfinished">已存在檔案名稱相同的檔案。
 您確定要覆蓋過去嗎？</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="471"/>
+        <location filename="../wingmenuwidget.cpp" line="524"/>
         <source>Warning</source>
         <translation type="unfinished">警告</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="471"/>
+        <location filename="../wingmenuwidget.cpp" line="524"/>
         <source>The file cannot be overwritten.</source>
         <translation type="unfinished">該檔案無法覆寫。</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="476"/>
+        <location filename="../wingmenuwidget.cpp" line="529"/>
         <source>Copy</source>
         <translation type="unfinished">複製</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="544"/>
+        <location filename="../wingmenuwidget.cpp" line="599"/>
         <source>Favorites</source>
         <translation type="unfinished">最愛</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="553"/>
+        <location filename="../wingmenuwidget.cpp" line="609"/>
         <source>All Applications</source>
         <translation type="unfinished">所有檔案</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="776"/>
+        <location filename="../wingmenuwidget.cpp" line="843"/>
         <source>Name</source>
         <translation type="unfinished">名稱</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="778"/>
+        <location filename="../wingmenuwidget.cpp" line="845"/>
         <source>Comment</source>
         <translation type="unfinished">註釋</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="780"/>
+        <location filename="../wingmenuwidget.cpp" line="847"/>
         <source>File</source>
         <translation type="unfinished">檔案</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="781"/>
+        <location filename="../wingmenuwidget.cpp" line="848"/>
         <source>Category</source>
         <translation type="unfinished">分類</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="782"/>
+        <location filename="../wingmenuwidget.cpp" line="849"/>
         <source>Exec</source>
         <translation type="unfinished">執行</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="959"/>
+        <location filename="../wingmenuwidget.cpp" line="1037"/>
         <source>Failed to start the application</source>
         <translation type="unfinished">無法啟動應用程式</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="960"/>
+        <location filename="../wingmenuwidget.cpp" line="1038"/>
         <source>%1 is not a valid .desktop file</source>
         <translation type="unfinished">%1 不是合法的 .desktop 檔案</translation>
     </message>

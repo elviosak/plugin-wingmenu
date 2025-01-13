@@ -7,18 +7,18 @@
 
 #include <QAction>
 #include <QDialog>
+#include <QKeyEvent>
 #include <QMenu>
 #include <QObject>
 #include <QString>
 #include <QToolButton>
 #include <QWidget>
 #include <QWidgetAction>
-#include <QKeyEvent>
 #include <XdgMenu>
 
 namespace GlobalKeyShortcut
 {
-    class Action;
+class Action;
 }
 class WingMenuWidget;
 
@@ -74,8 +74,8 @@ private:
 class WingMenuLibrary : public QObject, public ILXQtPanelPluginLibrary
 {
     Q_OBJECT
-        Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
-        Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
+    Q_INTERFACES(ILXQtPanelPluginLibrary)
 public:
     ILXQtPanelPlugin* instance(const ILXQtPanelPluginStartupInfo& startupInfo) const
     {

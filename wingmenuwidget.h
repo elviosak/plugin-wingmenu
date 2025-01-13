@@ -131,6 +131,7 @@ private:
     void favoritesRowRemoved();
     void moveFavoriteUp(int index);
     void moveFavoriteDown(int index);
+
 protected:
     void mouseReleaseEvent(QMouseEvent* event) override;
     void keyPressEvent(QKeyEvent* keyEvent) override;

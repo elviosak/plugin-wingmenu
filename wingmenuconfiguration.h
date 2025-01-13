@@ -12,12 +12,12 @@ class XdgMenu;
 // class QComboBox;
 namespace Ui
 {
-    class WingMenuConfiguration;
+class WingMenuConfiguration;
 };
 
 namespace GlobalKeyShortcut
 {
-    class Action;
+class Action;
 }
 
 class WingMenuConfiguration : public QDialog
@@ -34,11 +34,12 @@ public:
         PluginSettings* settings,
         GlobalKeyShortcut::Action* shortcut,
         XdgMenu* xdgMenu,
-        QWidget* parent = nullptr) : WingMenuConfiguration(
-            *settings,
-            shortcut,
-            xdgMenu,
-            parent) {};
+        QWidget* parent = nullptr)
+        : WingMenuConfiguration(
+              *settings,
+              shortcut,
+              xdgMenu,
+              parent) {};
 
     ~WingMenuConfiguration() = default;
 
@@ -77,5 +78,4 @@ private:
     void openEditDialog(const QString& fileName = QString());
     void saveDesktopFile(const QString& name, const QString& icon, const QString& exec, const QString& fileName);
     QString newFileName();
-
 };

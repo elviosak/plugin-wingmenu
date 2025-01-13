@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.18.0 FATAL_ERROR)
 # CMP0000: Call the cmake_minimum_required() command at the beginning of the top-level
 # CMakeLists.txt file even before calling the project() command.
 # The cmake_minimum_required(VERSION) command implicitly invokes the cmake_policy(VERSION)
@@ -15,7 +15,6 @@ project(lxqt-panel)
 set(PLUGIN "wingmenu")
 
 option(UPDATE_TRANSLATIONS "Update source translation translations/*.ts files" ON)
-#option(WITH_SCREENSAVER_FALLBACK "Include support for converting the deprecated 'screensaver' plugin to 'quicklaunch'. This requires the lxqt-leave (lxqt-session) to be installed in runtime." ON)
 
 # additional cmake files
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
@@ -29,18 +28,17 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-set(REQUIRED_QT_VERSION "5.15.3")
-set(KF5_MINIMUM_VERSION "5.92.0")
-set(LXQT_GLOBALKEYS_MINIMUM_VERSION "0.17.0")
-set(LXQT_MINIMUM_VERSION "0.17.0")
+set(REQUIRED_QT_VERSION "6.6.0")
+set(KF6_MINIMUM_VERSION "6.0.0")
+set(LXQT_GLOBALKEYS_MINIMUM_VERSION "2.0.0")
+set(LXQT_MINIMUM_VERSION "2.0.0")
 
-find_package(Qt5Widgets ${REQUIRED_QT_VERSION} REQUIRED)
-find_package(Qt5Xml ${REQUIRED_QT_VERSION} REQUIRED)
+find_package(Qt6Widgets ${REQUIRED_QT_VERSION} REQUIRED)
+find_package(Qt6Xml ${REQUIRED_QT_VERSION} REQUIRED)
 find_package(lxqt ${LXQT_MINIMUM_VERSION} REQUIRED)
 find_package(lxqt-globalkeys-ui ${LXQT_GLOBALKEYS_MINIMUM_VERSION} REQUIRED)
-find_package(Qt5Xdg REQUIRED)
+find_package(Qt6Xdg REQUIRED)
 # find_package(lxqt-panel ${LXQT_MINIMUM_VERSION} REQUIRED)
-# find_package(PkgConfig REQUIRED)
 
 # Patch Version
 # set(LXQT_PANEL_PATCH_VERSION 0)
@@ -70,7 +68,7 @@ message(STATUS "Panel plugins location: ${PLUGIN_DIR}")
 
 #########################################################################
 
-#include_directories("/usr/include/lxqt/")
+include_directories("${CMAKE_INSTALL_PREFIX}/include/lxqt/")
 set(HEADERS
   "${PLUGIN}plugin.h"
   "${PLUGIN}configuration.h"
@@ -95,8 +93,8 @@ set(UIS
 set(LIBRARIES
     ${LIBRARIES}
     lxqt-globalkeys-ui
-    Qt5Xdg
-    Qt5Xml
+    Qt6Xdg
+    Qt6Xml
 )
 set(ICON_SHARE_DIR ${CMAKE_INSTALL_FULL_DATAROOTDIR}/icons/hicolor/scalable/apps)
 set(ICON_FILE "resources/wing-lxqt.svg")

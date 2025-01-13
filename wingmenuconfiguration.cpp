@@ -1,36 +1,36 @@
 #include "wingmenuconfiguration.h"
-#include "ui_wingmenuconfiguration.h"
 #include "common.h"
+#include "ui_wingmenuconfiguration.h"
 
 #include <QAction>
 #include <QButtonGroup>
 #include <QComboBox>
-#include <QDialogButtonBox>
-#include <QDir>
 #include <QDialog>
 #include <QDialogButtonBox>
+#include <QDir>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QSpinBox>
 #include <QStandardPaths>
 #include <QTimer>
+#include <QVBoxLayout>
 
-#include <lxqt-globalkeys.h>
 #include <XdgDesktopFile>
 #include <XdgMenu>
 #include <XmlHelper>
+#include <lxqt-globalkeys.h>
 
 WingMenuConfiguration::WingMenuConfiguration(PluginSettings& settings,
     GlobalKeyShortcut::Action* shortcut,
     XdgMenu* xdgMenu,
     QWidget* parent)
-    : QDialog(parent),
-    ui(new Ui::WingMenuConfiguration),
-    mSettings(settings),
-    mXdgMenu(xdgMenu),
-    mShortcut(shortcut),
-    mLeaveActionsModel(new QStandardItemModel),
-    mDesktopFilesDir(QSL("%1/wingmenu").arg(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)))
+    : QDialog(parent)
+    , ui(new Ui::WingMenuConfiguration)
+    , mSettings(settings)
+    , mXdgMenu(xdgMenu)
+    , mShortcut(shortcut)
+    , mLeaveActionsModel(new QStandardItemModel)
+    , mDesktopFilesDir(QSL("%1/wingmenu").arg(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)))
 {
     setAttribute(Qt::WA_DeleteOnClose);
     setObjectName(QSL("WingMenuConfigurationWindow"));
@@ -61,9 +61,10 @@ WingMenuConfiguration::WingMenuConfiguration(PluginSettings& settings,
         QString fileName = QFileDialog::getOpenFileName(this, tr("Choose Icon File"),
             QDir::homePath(),
             tr("Images (*.png *.xpm *.svg)"));
-        if (!fileName.isEmpty())
+        if (!fileName.isEmpty()) {
             ui->iconLE->setText(fileName);
-        });
+        }
+    });
     connect(ui->menuFilePB, &QPushButton::clicked, this, &WingMenuConfiguration::chooseMenuFile);
 
     connect(ui->customizeLeaveGB, &QGroupBox::toggled, this, &WingMenuConfiguration::customizeLeave);
@@ -77,7 +78,8 @@ WingMenuConfiguration::WingMenuConfiguration(PluginSettings& settings,
     connect(ui->leaveActionsView, &QListView::activated, this, &WingMenuConfiguration::actionActivated);
     connect(mLeaveActionsModel, &QStandardItemModel::rowsRemoved, this, &WingMenuConfiguration::saveLeaveActions);
 }
-void WingMenuConfiguration::actionActivated(const QModelIndex& index) {
+void WingMenuConfiguration::actionActivated(const QModelIndex& index)
+{
     auto item = mLeaveActionsModel->itemFromIndex(index);
     openEditDialog(item->data().toString());
 }
@@ -103,7 +105,6 @@ void WingMenuConfiguration::copyDesktopFile(const QString& fileName)
         df.save(newFile);
         auto item = createItem(newFile);
         mLeaveActionsModel->appendRow(item);
-
     }
 }
 
@@ -116,7 +117,8 @@ void WingMenuConfiguration::loadLeaveActions() const
     }
 }
 
-void WingMenuConfiguration::saveLeaveActions() {
+void WingMenuConfiguration::saveLeaveActions()
+{
     QStringList leaveActions;
     for (int i = 0; i < mLeaveActionsModel->rowCount(); ++i) {
         leaveActions << mLeaveActionsModel->item(i)->data().toString();
@@ -124,11 +126,13 @@ void WingMenuConfiguration::saveLeaveActions() {
     settings().setValue(QSL("leaveActions"), leaveActions);
 }
 
-void WingMenuConfiguration::customizeLeave(bool customize) {
+void WingMenuConfiguration::customizeLeave(bool customize)
+{
     settings().setValue(QSL("customizeLeave"), customize);
 }
 
-void WingMenuConfiguration::loadFromMenu() {
+void WingMenuConfiguration::loadFromMenu()
+{
     auto mXml = mXdgMenu->xml().documentElement();
     DomElementIterator it(mXml, QString());
     while (it.hasNext()) {
@@ -144,10 +148,11 @@ void WingMenuConfiguration::loadFromMenu() {
     saveLeaveActions();
 }
 
-void WingMenuConfiguration::addDesktopFile() {
+void WingMenuConfiguration::addDesktopFile()
+{
     // When setting filter to Desktop file("*.desktop"), the desktop files aren't shown,
-    // probably because they are displayed with the "Name" field from the file 
-    //instead of the filename, so unless i find a workaround, it has to show all files.
+    // probably because they are displayed with the "Name" field from the file
+    // instead of the filename, so unless i find a workaround, it has to show all files.
     QString fileName = QFileDialog::getOpenFileName(this, tr("Choose Desktop File"),
         QDir::homePath(),
         tr("All files (*)"));
@@ -157,69 +162,73 @@ void WingMenuConfiguration::addDesktopFile() {
         if (df.load(fileName)) {
             copyDesktopFile(fileName);
             saveLeaveActions();
-        }
-        else {
+        } else {
             QMessageBox::warning(this, tr("Invalid desktop file"), tr("Selected file: %1 is invalid.").arg(fileName));
         }
     }
 }
 
-
-void WingMenuConfiguration::newAction() {
+void WingMenuConfiguration::newAction()
+{
     openEditDialog();
 }
 
-void WingMenuConfiguration::editAction() {
+void WingMenuConfiguration::editAction()
+{
     auto index = ui->leaveActionsView->currentIndex();
     if (index.isValid()) {
         auto item = mLeaveActionsModel->itemFromIndex(index);
         openEditDialog(item->data().toString());
-    }
-    else {
+    } else {
         QMessageBox::warning(this, tr("No item selected"), tr("Please select an item to edit."));
     }
 }
 
-void WingMenuConfiguration::upAction() {
+void WingMenuConfiguration::upAction()
+{
     auto current = ui->leaveActionsView->currentIndex();
     if (current.isValid() && current.row() > 0) {
         int row = current.row();
         mLeaveActionsModel->insertRow(row - 1, mLeaveActionsModel->takeItem(row));
         mLeaveActionsModel->removeRow(row + 1);
         ui->leaveActionsView->setCurrentIndex(mLeaveActionsModel->index(row - 1, 0));
-        // saveLeaveActions();
     }
 }
 
-void WingMenuConfiguration::downAction() {
+void WingMenuConfiguration::downAction()
+{
     auto current = ui->leaveActionsView->currentIndex();
     if (current.isValid() && current.row() < mLeaveActionsModel->rowCount() - 1) {
         int row = current.row();
         mLeaveActionsModel->insertRow(row + 2, mLeaveActionsModel->takeItem(row));
         mLeaveActionsModel->removeRow(row);
         ui->leaveActionsView->setCurrentIndex(mLeaveActionsModel->index(row + 1, 0));
-        // saveLeaveActions();
     }
 }
 
-void WingMenuConfiguration::removeAction() {
+void WingMenuConfiguration::removeAction()
+{
     auto index = ui->leaveActionsView->currentIndex();
     if (index.isValid()) {
         auto item = mLeaveActionsModel->itemFromIndex(index);
         QFile file(item->data().toString());
         file.remove();
         mLeaveActionsModel->removeRow(index.row());
-        // saveLeaveActions();
-    }
-    else {
+    } else {
         QMessageBox::warning(this, tr("No item selected"), tr("Please select an item to remove."));
     }
 }
 
-void WingMenuConfiguration::openEditDialog(const QString& fileName) {
+void WingMenuConfiguration::openEditDialog(const QString& fileName)
+{
     auto d = new QDialog;
+    int fh = d->fontMetrics().height();
     d->setWindowTitle(tr("Edit Action"));
-    auto form = new QFormLayout(d);
+    d->resize(20 * fh, 10 * fh);
+    auto vbox = new QVBoxLayout(d);
+    auto form = new QFormLayout;
+    vbox->addLayout(form);
+    vbox->addStretch(0);
     auto nameLine = new QLineEdit;
     auto iconLine = new QLineEdit;
     auto execLine = new QLineEdit;
@@ -231,32 +240,35 @@ void WingMenuConfiguration::openEditDialog(const QString& fileName) {
             execLine->setText(df.value(QSL("Exec")).toString());
         }
     }
-
-    nameLine->setMinimumWidth(200);
-    auto btnBox = new QDialogButtonBox(QDialogButtonBox::Save | QDialogButtonBox::Cancel, d);
+    nameLine->setMinimumWidth(12 * fh);
     form->addRow(tr("Name"), nameLine);
     form->addRow(tr("Icon"), iconLine);
     form->addRow(tr("Command"), execLine);
-    form->addRow(btnBox);
+
+    auto btnBox = new QDialogButtonBox(QDialogButtonBox::Save | QDialogButtonBox::Cancel, d);
+    vbox->addWidget(btnBox);
+
+    // form->addRow(btnBox);
     connect(btnBox, &QDialogButtonBox::accepted, this,
         [=] {
             if (!nameLine->text().isEmpty()
                 && !iconLine->text().isEmpty()
-                && !execLine->text().isEmpty())
-            {
+                && !execLine->text().isEmpty()) {
                 XdgDesktopFile df(XdgDesktopFile::ApplicationType, nameLine->text(), execLine->text());
                 df.setValue(QSL("Icon"), iconLine->text());
                 saveDesktopFile(nameLine->text(), iconLine->text(), execLine->text(), fileName);
                 d->close();
-            }
-            else {
+            } else {
                 QStringList textList;
-                if (nameLine->text().isEmpty())
+                if (nameLine->text().isEmpty()) {
                     textList << tr("\"Name\" field is empty.");
-                if (iconLine->text().isEmpty())
+                }
+                if (iconLine->text().isEmpty()) {
                     textList << tr("\"Icon\" field is empty.");
-                if (execLine->text().isEmpty())
+                }
+                if (execLine->text().isEmpty()) {
                     textList << tr("\"Command\" field is empty.");
+                }
                 QMessageBox::warning(d, tr("Please fill all fields."), textList.join(QLatin1Char('\n')));
             }
         });
@@ -275,10 +287,8 @@ void WingMenuConfiguration::saveDesktopFile(const QString& name, const QString& 
         df.setValue(QSL("Icon"), icon);
         df.save(newFile);
         mLeaveActionsModel->appendRow(createItem(newFile));
-    }
-    else {
-        for (int i = 0; i < mLeaveActionsModel->rowCount(); ++i)
-        {
+    } else {
+        for (int i = 0; i < mLeaveActionsModel->rowCount(); ++i) {
             auto item = mLeaveActionsModel->item(i);
             if (item->data().toString() == fileName) {
                 XdgDesktopFile df;
@@ -300,20 +310,22 @@ QString WingMenuConfiguration::newFileName()
 {
     QDir dir(mDesktopFilesDir);
     dir.mkpath(QSL("."));
-    for (int i = 0;;++i) {
+    for (int i = 0;; ++i) {
         QString fileName = QSL("%1.desktop").arg(i);
-        if (!dir.exists(fileName))
+        if (!dir.exists(fileName)) {
             return dir.absolutePath() + QLatin1Char('/') + fileName;
+        }
     }
 }
 
 void WingMenuConfiguration::chooseMenuFile()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Choose Menu File"),
-        settings().value(QSL("menuFile"), QSL("/etc/xdg/menus/lxqt-applications.menu")).toString(),
+        settings().value(QSL("menuFile"), DEFAULT_MENU_FILE).toString(),
         tr("Menu files (*.menu)"));
-    if (!fileName.isEmpty())
+    if (!fileName.isEmpty()) {
         ui->menuFileLE->setText(fileName);
+    }
 }
 void WingMenuConfiguration::globalShortcutChanged(const QString& /*oldShortcut*/, const QString& newShortcut)
 {
@@ -379,8 +391,7 @@ void WingMenuConfiguration::dialogButtonsAction(QAbstractButton* btn)
     if (box && box->buttonRole(btn) == QDialogButtonBox::ResetRole) {
         settings().loadFromCache();
         loadSettings();
-    }
-    else {
+    } else {
         close();
     }
 }

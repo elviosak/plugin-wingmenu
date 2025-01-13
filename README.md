@@ -1,6 +1,8 @@
-# Wing Menu is an alternative menu plugin for [lxqt-panel](https://github.com/lxqt/lxqt-panel)
+# Wing Menu is an alternative menu plugin for [lxqt-panel](https://github.com/lxqt/lxqt-panel) (Updated for LXQt 2.0)
 
 It has two columns instead of the "classic menu" and was inspired by Xfce's [Whisker Menu](https://docs.xfce.org/panel-plugins/xfce4-whiskermenu-plugin/start)
+
+License: [LGPL-2.1+](LICENSE "License")
 
 ## Screenshots
 
@@ -24,22 +26,24 @@ It has two columns instead of the "classic menu" and was inspired by Xfce's [Whi
 
 ### Dependencies:
 
-#### Lubuntu (22.04)
-
-```
-sudo apt install git build-essential cmake qttools5-dev \
-liblxqt0-dev libkf5windowsystem-dev libqt5x11extras5-dev \
-liblxqt-globalkeys-ui0-dev liblxqt-globalkeys0-dev
-```
-
-#### Arch Linux
-
-```
-sudo pacman --needed -S git base-devel cmake liblxqt \
-lxqt-build-tools qt5-base kwindowsystem qt5-x11extras
-```
+- lxqt-build-tools 2.0+
+- liblxqt 2.0+
+- libqtxdg 4.0+
+- lxqt-panel 2.0+
+- lxqt-globalkeys 2.0+
+- KWindowSystem 6.0+
+- Qt 6
 
 ### Compile and install plugin:
+
+#### Arch Linux (install dependencies)
+
+```
+sudo pacman --needed -S git base-devel cmake lxqt-build-tools \
+liblxqt libqtxdg lxqt-globalkeys lxqt-panel kwindowsystem qt6-base
+```
+
+#### Clone repo and install
 
 ```bash
 # clone repo

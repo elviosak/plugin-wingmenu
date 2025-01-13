@@ -7,10 +7,12 @@
 class ItemDescriptionDelegate : public QStyledItemDelegate
 {
     using QStyledItemDelegate::QStyledItemDelegate;
+
 public:
     void setAppLayout(AppLayout::Layout);
 
     AppLayout::Layout mAppLayout;
+
 private:
     void paint(QPainter* painter,
         const QStyleOptionViewItem& option,
