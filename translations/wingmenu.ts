@@ -5,172 +5,207 @@
     <name>WingMenuConfiguration</name>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="17"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="486"/>
         <source>WingMenu settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="30"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="512"/>
         <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="36"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="487"/>
         <source>Panel Button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="45"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="488"/>
         <source>Show icon:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="73"/>
         <location filename="../wingmenuconfiguration.ui" line="116"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="489"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="493"/>
         <source>Browse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="87"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="490"/>
         <source>Show text:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="100"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="491"/>
         <source>Menu file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="106"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="492"/>
         <source>File:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="130"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="494"/>
         <source>Keyboard Shortcut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="149"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="496"/>
         <source>Click the button to record shortcut:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="177"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="497"/>
         <source>Display</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="183"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="498"/>
         <source>Categories on the Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="190"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="499"/>
         <source>Search on Bottom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="197"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="500"/>
         <source>Sidebar on the Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="204"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="501"/>
         <source>Reverse Sidebar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="211"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="502"/>
         <source>Applications Layout:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="219"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="503"/>
         <source>List (Name and Description)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="224"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="504"/>
         <source>List (Name only)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="229"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="505"/>
         <source>Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="240"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="507"/>
         <source>Other</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="246"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="508"/>
         <source>Switch Category on hover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="253"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="509"/>
         <source> ms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="256"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="510"/>
         <source>Delay: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="275"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="511"/>
         <source>Ask before removing Favorite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="299"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="523"/>
         <source>Leave Actions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="305"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="513"/>
         <source>Customize Leave Actions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="320"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="514"/>
         <source>Load from menu file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="327"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="515"/>
         <source>Add .desktop file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="350"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="517"/>
         <source>The order displayed here ignores the option &quot;Reverse sidebar&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="394"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="518"/>
         <source>New</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="405"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="519"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="432"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="520"/>
         <source>Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="443"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="521"/>
         <source>Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="470"/>
+        <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="522"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
