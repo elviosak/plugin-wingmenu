@@ -6,7 +6,9 @@ License: [LGPL-2.1+](LICENSE "License")
 
 ## Translations
 You can contribute with translations on [Weblate](https://translate.lxqt-project.org/projects/elviosak/)
+
 [![Translation status](https://translate.lxqt-project.org/widgets/elviosak/-/multi-auto.svg "Translation status")](https://translate.lxqt-project.org/engage/elviosak/?utm_source=widget)
+
 ## Screenshots
 
 ### Settings:
