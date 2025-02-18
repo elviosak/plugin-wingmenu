@@ -123,8 +123,7 @@
         <location filename="../wingmenuconfiguration.ui" line="240"/>
         <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="507"/>
         <source>Other</source>
-        <translation>Otro
-</translation>
+        <translation>Otro</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="246"/>
@@ -373,9 +372,10 @@
 %1:%2
 from Favorites?
 </source>
-        <translation>Estás seguro de que desea eliminar
+        <translation>¿Estás seguro de que desea eliminar
 %1:%2
-de Favoritos?</translation>
+de Favoritos?
+</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="488"/>
