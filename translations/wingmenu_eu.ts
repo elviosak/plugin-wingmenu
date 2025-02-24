@@ -7,7 +7,7 @@
         <location filename="../wingmenuconfiguration.ui" line="17"/>
         <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="486"/>
         <source>WingMenu settings</source>
-        <translation type="unfinished"></translation>
+        <translation>WingMenu ezarpenak</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="30"/>
