@@ -75,7 +75,7 @@
         <location filename="../wingmenuconfiguration.ui" line="183"/>
         <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="498"/>
         <source>Categories on the Left</source>
-        <translation>分類目錄於左側</translation>
+        <translation>分類大項於左側</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="190"/>
