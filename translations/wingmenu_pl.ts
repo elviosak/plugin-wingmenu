@@ -19,7 +19,7 @@
         <location filename="../wingmenuconfiguration.ui" line="36"/>
         <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="487"/>
         <source>Panel Button</source>
-        <translation>Przycisk Panelu</translation>
+        <translation>Przycisk panelu</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="45"/>
