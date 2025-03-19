@@ -129,7 +129,7 @@
         <location filename="../wingmenuconfiguration.ui" line="246"/>
         <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="508"/>
         <source>Switch Category on hover</source>
-        <translation>游標滑過時切換分類</translation>
+        <translation>游標懸停時切換分類</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="253"/>
