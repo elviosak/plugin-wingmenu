@@ -456,7 +456,7 @@ Substituir?</translation>
     <message>
         <location filename="../wingmenuwidget.cpp" line="1038"/>
         <source>%1 is not a valid .desktop file</source>
-        <translation>%1 não é válido.</translation>
+        <translation>%1 não é um arquivo .desktop válido</translation>
     </message>
 </context>
 </TS>
