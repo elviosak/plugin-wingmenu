@@ -13,19 +13,19 @@
         <location filename="../wingmenuconfiguration.ui" line="30"/>
         <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="512"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Orokorra</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="36"/>
         <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="487"/>
         <source>Panel Button</source>
-        <translation type="unfinished"></translation>
+        <translation>Panelaren botoia</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="45"/>
         <location filename="../build/wingmenu_autogen/include/ui_wingmenuconfiguration.h" line="488"/>
         <source>Show icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>Erakutsi ikonoa:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="73"/>
