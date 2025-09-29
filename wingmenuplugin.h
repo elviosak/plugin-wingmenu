@@ -7,6 +7,8 @@
 
 #include <QAction>
 #include <QDialog>
+#include <QDBusConnection>
+#include <QDBusServiceWatcher>
 #include <QKeyEvent>
 #include <QMenu>
 #include <QObject>
@@ -46,7 +48,8 @@ public:
     void showMenu();
     void hideMenu();
     const GlobalKeyShortcut::Action* shortcut() { return mShortcut; };
-
+public slots:
+    void toggle() { showHideMenu(); };
 private:
     QToolButton* mWidget;
     GlobalKeyShortcut::Action* mShortcut;
@@ -56,11 +59,15 @@ private:
     AppLayout::Layout mAppLayout;
     QString mMenuFile;
     XdgMenu* mXdgMenu;
+    QDBusServiceWatcher* watcher;
 
     bool mShowIcon;
     QString mIcon;
     bool mShowText;
     QString mText;
+    
+    QString mDBusMessage;
+    void registerService();
 
     void settingsChanged() override;
     void setupShortcut();

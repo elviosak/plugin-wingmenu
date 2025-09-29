@@ -33,9 +33,14 @@ WingMenuPlugin::WingMenuPlugin(const ILXQtPanelPluginStartupInfo& startupInfo)
     // buildMenu();
     setupShortcut();
     connect(mXdgMenu, &XdgMenu::changed, this, &WingMenuPlugin::buildMenu);
+    QTimer::singleShot(0, this, &WingMenuPlugin::registerService);
 }
 
-WingMenuPlugin::~WingMenuPlugin() = default;
+WingMenuPlugin::~WingMenuPlugin() 
+{
+    if (watcher)
+        watcher->deleteLater();
+}
 
 void WingMenuPlugin::buildMenu()
 {
@@ -125,6 +130,39 @@ void WingMenuPlugin::setupShortcut()
     }
 }
 
+void WingMenuPlugin::registerService()
+{   
+    if (sender()) {
+        qInfo() << "Existing service was unregistered, trying again";
+        disconnect(watcher, &QDBusServiceWatcher::serviceUnregistered, this, &WingMenuPlugin::registerService);
+        watcher->deleteLater();
+    }
+
+    auto pluginName = settings()->group();
+    auto serviceName = QSL("org.lxqt.panel.%1").arg(pluginName);
+    auto bus = QDBusConnection::sessionBus();
+    if (bus.registerService(serviceName)) {
+        // Register the object
+        qInfo() << "D-Bus Service" << serviceName << "registered succesfully.";
+        auto objectPath = QSL("/%1").arg(pluginName);
+        if (bus.registerObject(objectPath, this, QDBusConnection::QDBusConnection::ExportAllSlots)) {
+            qInfo() << "D-Bus Object" << objectPath <<"registered succesfully.";
+            mDBusMessage = QSL("qdbus %1 %2 toggle").arg(serviceName, objectPath);
+        }
+        else {
+            qInfo() << "D-Bus Object" << objectPath << "could not be registered.";
+            mDBusMessage = tr("Failed to Register D-Bus Object");
+        }
+    }
+    else {
+        qInfo() << "Service" << serviceName << "exists, will wait for it to unregister.";
+        mDBusMessage = tr("Failed to Register D-Bus Service");
+        watcher = new QDBusServiceWatcher(serviceName, bus);
+        connect(watcher, &QDBusServiceWatcher::serviceUnregistered, this, &WingMenuPlugin::registerService);
+    }
+}
+
+
 void WingMenuPlugin::showMenu()
 {
     if (!mMenu) {
@@ -175,5 +213,5 @@ void WingMenuPlugin::realign()
 
 QDialog* WingMenuPlugin::configureDialog()
 {
-    return new WingMenuConfiguration(settings(), mShortcut, mXdgMenu);
+    return new WingMenuConfiguration(settings(), mShortcut, mXdgMenu, mDBusMessage);
 }

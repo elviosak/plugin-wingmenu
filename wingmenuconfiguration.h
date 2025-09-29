@@ -28,17 +28,20 @@ public:
         PluginSettings& settings,
         GlobalKeyShortcut::Action* shortcut,
         XdgMenu* xdgMenu,
+        QString dBusMessage,
         QWidget* parent = nullptr);
 
     explicit WingMenuConfiguration(
         PluginSettings* settings,
         GlobalKeyShortcut::Action* shortcut,
         XdgMenu* xdgMenu,
+        QString dBusMessage,
         QWidget* parent = nullptr)
         : WingMenuConfiguration(
               *settings,
               shortcut,
               xdgMenu,
+              dBusMessage,
               parent) {};
 
     ~WingMenuConfiguration() = default;

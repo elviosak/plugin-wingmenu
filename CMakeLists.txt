@@ -35,6 +35,7 @@ set(LXQT_MINIMUM_VERSION "2.0.0")
 
 find_package(Qt6Widgets ${REQUIRED_QT_VERSION} REQUIRED)
 find_package(Qt6Xml ${REQUIRED_QT_VERSION} REQUIRED)
+find_package(Qt6DBus ${REQUIRED_QT_VERSION} REQUIRED)
 find_package(lxqt ${LXQT_MINIMUM_VERSION} REQUIRED)
 find_package(lxqt-globalkeys-ui ${LXQT_GLOBALKEYS_MINIMUM_VERSION} REQUIRED)
 find_package(Qt6Xdg REQUIRED)
@@ -95,6 +96,7 @@ set(LIBRARIES
     lxqt-globalkeys-ui
     Qt6Xdg
     Qt6Xml
+    Qt6DBus
 )
 set(ICON_SHARE_DIR ${CMAKE_INSTALL_FULL_DATAROOTDIR}/icons/hicolor/scalable/apps)
 set(ICON_FILE "resources/wing-lxqt.svg")

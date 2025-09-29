@@ -23,6 +23,7 @@
 WingMenuConfiguration::WingMenuConfiguration(PluginSettings& settings,
     GlobalKeyShortcut::Action* shortcut,
     XdgMenu* xdgMenu,
+    QString dBusMessage,
     QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::WingMenuConfiguration)
@@ -77,7 +78,10 @@ WingMenuConfiguration::WingMenuConfiguration(PluginSettings& settings,
     connect(ui->removeActionPB, &QPushButton::clicked, this, &WingMenuConfiguration::removeAction);
     connect(ui->leaveActionsView, &QListView::activated, this, &WingMenuConfiguration::actionActivated);
     connect(mLeaveActionsModel, &QStandardItemModel::rowsRemoved, this, &WingMenuConfiguration::saveLeaveActions);
+    
+    ui->dBusLE->setText(dBusMessage);
 }
+
 void WingMenuConfiguration::actionActivated(const QModelIndex& index)
 {
     auto item = mLeaveActionsModel->itemFromIndex(index);
@@ -250,7 +254,7 @@ void WingMenuConfiguration::openEditDialog(const QString& fileName)
 
     // form->addRow(btnBox);
     connect(btnBox, &QDialogButtonBox::accepted, this,
-        [=] {
+        [=, this] {
             if (!nameLine->text().isEmpty()
                 && !iconLine->text().isEmpty()
                 && !execLine->text().isEmpty()) {
@@ -273,7 +277,7 @@ void WingMenuConfiguration::openEditDialog(const QString& fileName)
             }
         });
     connect(btnBox, &QDialogButtonBox::rejected, this,
-        [=] {
+        [d] {
             d->close();
         });
     d->exec();
