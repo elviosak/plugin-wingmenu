@@ -2,6 +2,8 @@
 
 It has two columns instead of the "classic menu" and was inspired by Xfce's [Whisker Menu](https://docs.xfce.org/panel-plugins/xfce4-whiskermenu-plugin/start)
 
+Can be activated via D-Bus `qdbus org.lxqt.panel.wingmenu /wingmenu toggle` or wingmenu2, wingmenu3, etc. Exact command is available in the Settings window.
+
 License: [LGPL-2.1+](LICENSE "License")
 
 ## Translations
@@ -13,7 +15,7 @@ You can contribute with translations on [Weblate](https://translate.lxqt-project
 
 ### Settings:
 
-![Settings](screenshots/settings.png "Settings")
+![Settings](screenshots/wing-settings.png "Settings")
 
 ### Name and Description View:
 
