@@ -16,33 +16,33 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="36"/>
         <source>Panel Button</source>
-        <translation type="unfinished"></translation>
+        <translation>Skydelio mygtukas</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="45"/>
         <source>Show icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti piktogramą:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="73"/>
         <location filename="../wingmenuconfiguration.ui" line="115"/>
         <source>Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>Naršyti</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="86"/>
         <source>Show text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti tekstą:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="99"/>
         <source>Menu file</source>
-        <translation type="unfinished"></translation>
+        <translation>Meniu failas</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="105"/>
         <source>File:</source>
-        <translation type="unfinished"></translation>
+        <translation>Failas:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="128"/>
@@ -62,67 +62,67 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="191"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Atvaizdavimas</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="197"/>
         <source>Categories on the Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorijos kairėje</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="204"/>
         <source>Search on Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Paieška apačioje</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="211"/>
         <source>Sidebar on the Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Šoninis skydelis kairėje</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="218"/>
         <source>Reverse Sidebar</source>
-        <translation type="unfinished"></translation>
+        <translation>Atvirkštinis šoninis skydelis</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="225"/>
         <source>Applications Layout:</source>
-        <translation type="unfinished"></translation>
+        <translation>Programų išdėstymas:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="233"/>
         <source>List (Name and Description)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sąrašas (Pavadinimas ir aprašas)</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="238"/>
         <source>List (Name only)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sąrašas (Tik pavadinimas)</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="243"/>
         <source>Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Piktogramos</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="254"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>Kita</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="260"/>
         <source>Switch Category on hover</source>
-        <translation type="unfinished"></translation>
+        <translation>Perjungti kategoriją užvedus pelę</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="267"/>
         <source> ms</source>
-        <translation type="unfinished"></translation>
+        <translation> ms</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="270"/>
         <source>Delay: </source>
-        <translation type="unfinished"></translation>
+        <translation>Delsa: </translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="289"/>
