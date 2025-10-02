@@ -47,7 +47,7 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="128"/>
         <source>D-Bus Activation</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktywacja magistrali D-Bus</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="144"/>
@@ -306,12 +306,12 @@
     <message>
         <location filename="../wingmenuplugin.cpp" line="153"/>
         <source>Failed to Register D-Bus Object</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie udało się zarejestrować obiektu D-Bus</translation>
     </message>
     <message>
         <location filename="../wingmenuplugin.cpp" line="158"/>
         <source>Failed to Register D-Bus Service</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie udało się zarejestrować usługi D-Bus</translation>
     </message>
 </context>
 <context>
