@@ -47,7 +47,7 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="128"/>
         <source>D-Bus Activation</source>
-        <translation type="unfinished"></translation>
+        <translation>D-Bus 啟動作用</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="144"/>
@@ -306,12 +306,12 @@
     <message>
         <location filename="../wingmenuplugin.cpp" line="153"/>
         <source>Failed to Register D-Bus Object</source>
-        <translation type="unfinished"></translation>
+        <translation>註冊 D-Bus 事項失敗</translation>
     </message>
     <message>
         <location filename="../wingmenuplugin.cpp" line="158"/>
         <source>Failed to Register D-Bus Service</source>
-        <translation type="unfinished"></translation>
+        <translation>註冊 D-Bus 服務失敗</translation>
     </message>
 </context>
 <context>
@@ -437,7 +437,7 @@ Do you want to overwrite it?</source>
     <message>
         <location filename="../wingmenuwidget.cpp" line="1038"/>
         <source>%1 is not a valid .desktop file</source>
-        <translation>%1 不是合法的 .desktop 檔案</translation>
+        <translation>%1 不是有效的 .desktop 檔案</translation>
     </message>
 </context>
 </TS>
