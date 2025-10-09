@@ -49,7 +49,7 @@ public:
     void hideMenu();
     const GlobalKeyShortcut::Action* shortcut() { return mShortcut; };
 public slots:
-    void toggle() { showHideMenu(); };
+    void toggle() { showHideMenuDelayed(); };
 private:
     QToolButton* mWidget;
     GlobalKeyShortcut::Action* mShortcut;
