@@ -205,8 +205,7 @@ bool WingMenuWidget::eventFilter(QObject* watched, QEvent* event)
 void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent)
 {
     auto k = (Qt::Key)keyEvent->key();
-    if (QKeySequence(keyEvent->key() | keyEvent->modifiers())
-        == QKeySequence(mPlugin->shortcut()->shortcut())) {
+    if (QKeySequence(keyEvent->key() | keyEvent->modifiers()) == QKeySequence(mPlugin->shortcut()->shortcut())) {
         mPlugin->hideMenu();
         keyEvent->accept();
         return;
@@ -221,10 +220,6 @@ void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent)
             auto index = selection->selectedRows().first();
             indexActivated(index);
         }
-        keyEvent->accept();
-    }
-    else if (k == Qt::Key_Escape) {
-        mPlugin->hideMenu();
         keyEvent->accept();
     }
     else if (!keyEvent->text().isEmpty()) {
@@ -366,7 +361,13 @@ void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent)
         }
         keyEvent->accept();
     }
-    keyEvent->ignore();
+    else if (k == Qt::Key_Escape || (k >= Qt::Key_F1 && k <= Qt::Key_F35)) {
+        mPlugin->hideMenu();
+        keyEvent->accept();
+    }
+    else {
+        keyEvent->ignore();
+    }
 }
 
 void WingMenuWidget::focusCategoryWidget()

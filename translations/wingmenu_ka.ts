@@ -327,27 +327,27 @@
         <translation>ძებნა...</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="545"/>
+        <location filename="../wingmenuwidget.cpp" line="546"/>
         <source>Move Up</source>
         <translation>ატანა</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="555"/>
+        <location filename="../wingmenuwidget.cpp" line="556"/>
         <source>Move Down</source>
         <translation>ჩამოტანა</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="566"/>
+        <location filename="../wingmenuwidget.cpp" line="567"/>
         <source>Remove from Favorites</source>
         <translation>რჩეულებიდან წაშლა</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="570"/>
+        <location filename="../wingmenuwidget.cpp" line="571"/>
         <source>Confirm removal</source>
         <translation>წაშლის დადასტურება</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="570"/>
+        <location filename="../wingmenuwidget.cpp" line="571"/>
         <source>Are you sure you want to remove
 %1:%2
 from Favorites?
@@ -358,84 +358,84 @@ from Favorites?
 </translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="493"/>
+        <location filename="../wingmenuwidget.cpp" line="494"/>
         <source>Add to Favorites</source>
         <translation>რჩეულებში ჩამატება</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="518"/>
+        <location filename="../wingmenuwidget.cpp" line="519"/>
         <source>Add to desktop</source>
         <translation>სამუშაო მაგიდაზე დამატება</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="524"/>
+        <location filename="../wingmenuwidget.cpp" line="525"/>
         <source>Question</source>
         <translation>კითხვა</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="524"/>
+        <location filename="../wingmenuwidget.cpp" line="525"/>
         <source>A file with the same name already exists.
 Do you want to overwrite it?</source>
         <translation>ფაილი ამ სახელით უკვე არსებობს.
 გნებავთ, თავზე გადააწეროთ მას?</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="529"/>
+        <location filename="../wingmenuwidget.cpp" line="530"/>
         <source>Warning</source>
         <translation>გაფრთხილება</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="529"/>
+        <location filename="../wingmenuwidget.cpp" line="530"/>
         <source>The file cannot be overwritten.</source>
         <translation>ფაილის თავზე გადაწერა შეუძლებელია.</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="534"/>
+        <location filename="../wingmenuwidget.cpp" line="535"/>
         <source>Copy</source>
         <translation>კოპირება</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="604"/>
+        <location filename="../wingmenuwidget.cpp" line="605"/>
         <source>Favorites</source>
         <translation>რჩეულები</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="614"/>
+        <location filename="../wingmenuwidget.cpp" line="615"/>
         <source>All Applications</source>
         <translation>ყველა აპლიკაცია</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="848"/>
+        <location filename="../wingmenuwidget.cpp" line="849"/>
         <source>Name</source>
         <translation>სახელი</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="850"/>
+        <location filename="../wingmenuwidget.cpp" line="851"/>
         <source>Comment</source>
         <translation>კომენტარი</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="852"/>
+        <location filename="../wingmenuwidget.cpp" line="853"/>
         <source>File</source>
         <translation>ფაილი</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="853"/>
+        <location filename="../wingmenuwidget.cpp" line="854"/>
         <source>Category</source>
         <translation>კატეგორია</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="854"/>
+        <location filename="../wingmenuwidget.cpp" line="855"/>
         <source>Exec</source>
         <translation>გაშვება</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="1042"/>
+        <location filename="../wingmenuwidget.cpp" line="1043"/>
         <source>Failed to start the application</source>
         <translation>აპლიკაციის გაშვება ჩავარდა</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="1043"/>
+        <location filename="../wingmenuwidget.cpp" line="1044"/>
         <source>%1 is not a valid .desktop file</source>
         <translation>%1 არასწორი .desktop ფაილია</translation>
     </message>
