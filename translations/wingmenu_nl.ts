@@ -294,22 +294,22 @@
 <context>
     <name>WingMenuPlugin</name>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="80"/>
+        <location filename="../wingmenuplugin.cpp" line="94"/>
         <source>Menu</source>
         <translation>Menu</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="123"/>
+        <location filename="../wingmenuplugin.cpp" line="137"/>
         <source>Show/hide main menu</source>
         <translation>Hoofdmenu tonen/verbergen</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="154"/>
+        <location filename="../wingmenuplugin.cpp" line="167"/>
         <source>Failed to Register D-Bus Object</source>
         <translation>Het D-Bus-object kan niet worden geregistreerd</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="159"/>
+        <location filename="../wingmenuplugin.cpp" line="155"/>
         <source>Failed to Register D-Bus Service</source>
         <translation>De D-Bus-dienst kan niet worden geregistreerd</translation>
     </message>
@@ -327,27 +327,27 @@
         <translation>Zoeken…</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="540"/>
+        <location filename="../wingmenuwidget.cpp" line="545"/>
         <source>Move Up</source>
         <translation>Omhoog verplaatsen</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="550"/>
+        <location filename="../wingmenuwidget.cpp" line="555"/>
         <source>Move Down</source>
         <translation>Omlaag verplaatsen</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="561"/>
+        <location filename="../wingmenuwidget.cpp" line="566"/>
         <source>Remove from Favorites</source>
         <translation>Verwijderen uit favorieten</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="565"/>
+        <location filename="../wingmenuwidget.cpp" line="570"/>
         <source>Confirm removal</source>
         <translation>Verwijderen bevestigen</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="565"/>
+        <location filename="../wingmenuwidget.cpp" line="570"/>
         <source>Are you sure you want to remove
 %1:%2
 from Favorites?
@@ -358,84 +358,84 @@ wilt verwijderen uit de favorieten?
 </translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="488"/>
+        <location filename="../wingmenuwidget.cpp" line="493"/>
         <source>Add to Favorites</source>
         <translation>Toevoegen aan favorieten</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="513"/>
+        <location filename="../wingmenuwidget.cpp" line="518"/>
         <source>Add to desktop</source>
         <translation>Snelkoppeling maken</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="519"/>
+        <location filename="../wingmenuwidget.cpp" line="524"/>
         <source>Question</source>
         <translation>Vraag</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="519"/>
+        <location filename="../wingmenuwidget.cpp" line="524"/>
         <source>A file with the same name already exists.
 Do you want to overwrite it?</source>
         <translation>Er is al een bestand met deze naam.
 Wilt u het bestand overschrijven?</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="524"/>
+        <location filename="../wingmenuwidget.cpp" line="529"/>
         <source>Warning</source>
         <translation>Waarschuwing</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="524"/>
+        <location filename="../wingmenuwidget.cpp" line="529"/>
         <source>The file cannot be overwritten.</source>
         <translation>Het bestand kan niet worden overschreven.</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="529"/>
+        <location filename="../wingmenuwidget.cpp" line="534"/>
         <source>Copy</source>
         <translation>Kopiëren</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="599"/>
+        <location filename="../wingmenuwidget.cpp" line="604"/>
         <source>Favorites</source>
         <translation>Favorieten</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="609"/>
+        <location filename="../wingmenuwidget.cpp" line="614"/>
         <source>All Applications</source>
         <translation>Alle programma&apos;s</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="843"/>
+        <location filename="../wingmenuwidget.cpp" line="848"/>
         <source>Name</source>
         <translation>Naam</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="845"/>
+        <location filename="../wingmenuwidget.cpp" line="850"/>
         <source>Comment</source>
         <translation>Opmerking</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="847"/>
+        <location filename="../wingmenuwidget.cpp" line="852"/>
         <source>File</source>
         <translation>Bestand</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="848"/>
+        <location filename="../wingmenuwidget.cpp" line="853"/>
         <source>Category</source>
         <translation>Categorie</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="849"/>
+        <location filename="../wingmenuwidget.cpp" line="854"/>
         <source>Exec</source>
         <translation>Uitvoerbaar bestand</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="1037"/>
+        <location filename="../wingmenuwidget.cpp" line="1042"/>
         <source>Failed to start the application</source>
         <translation>Het programma kan niet worden gestart</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="1038"/>
+        <location filename="../wingmenuwidget.cpp" line="1043"/>
         <source>%1 is not a valid .desktop file</source>
         <translation>‘%1’ is geen geldig .desktop-bestand</translation>
     </message>

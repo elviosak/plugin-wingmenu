@@ -294,22 +294,22 @@
 <context>
     <name>WingMenuPlugin</name>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="80"/>
+        <location filename="../wingmenuplugin.cpp" line="94"/>
         <source>Menu</source>
         <translation>Menüü</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="123"/>
+        <location filename="../wingmenuplugin.cpp" line="137"/>
         <source>Show/hide main menu</source>
         <translation>Näita või peida põhimenüü</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="154"/>
+        <location filename="../wingmenuplugin.cpp" line="167"/>
         <source>Failed to Register D-Bus Object</source>
         <translation>D-Busi objekti registreerimine ei õnnestunud</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="159"/>
+        <location filename="../wingmenuplugin.cpp" line="155"/>
         <source>Failed to Register D-Bus Service</source>
         <translation>D-Busi teenuse registreerimine ei õnnestunud</translation>
     </message>
@@ -327,27 +327,27 @@
         <translation>Otsi...</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="540"/>
+        <location filename="../wingmenuwidget.cpp" line="545"/>
         <source>Move Up</source>
         <translation>Liiguta üles</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="550"/>
+        <location filename="../wingmenuwidget.cpp" line="555"/>
         <source>Move Down</source>
         <translation>Liiguta alla</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="561"/>
+        <location filename="../wingmenuwidget.cpp" line="566"/>
         <source>Remove from Favorites</source>
         <translation>Eemalda lemmikule hulgast</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="565"/>
+        <location filename="../wingmenuwidget.cpp" line="570"/>
         <source>Confirm removal</source>
         <translation>Kinnita eemaldamine</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="565"/>
+        <location filename="../wingmenuwidget.cpp" line="570"/>
         <source>Are you sure you want to remove
 %1:%2
 from Favorites?
@@ -358,84 +358,84 @@ eemaldada lemmikute seast?
 </translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="488"/>
+        <location filename="../wingmenuwidget.cpp" line="493"/>
         <source>Add to Favorites</source>
         <translation>Lisa lemmikuks</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="513"/>
+        <location filename="../wingmenuwidget.cpp" line="518"/>
         <source>Add to desktop</source>
         <translation>Lisa töölauale</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="519"/>
+        <location filename="../wingmenuwidget.cpp" line="524"/>
         <source>Question</source>
         <translation>Küsimus</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="519"/>
+        <location filename="../wingmenuwidget.cpp" line="524"/>
         <source>A file with the same name already exists.
 Do you want to overwrite it?</source>
         <translation>Sellise nimega fail on juba olemas.
 Kas sa soovid seda üle kirjutada?</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="524"/>
+        <location filename="../wingmenuwidget.cpp" line="529"/>
         <source>Warning</source>
         <translation>Hoiatus</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="524"/>
+        <location filename="../wingmenuwidget.cpp" line="529"/>
         <source>The file cannot be overwritten.</source>
         <translation>Faili ülekirjutamine ei õnnestu.</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="529"/>
+        <location filename="../wingmenuwidget.cpp" line="534"/>
         <source>Copy</source>
         <translation>Kopeeri</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="599"/>
+        <location filename="../wingmenuwidget.cpp" line="604"/>
         <source>Favorites</source>
         <translation>Lemmikud</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="609"/>
+        <location filename="../wingmenuwidget.cpp" line="614"/>
         <source>All Applications</source>
         <translation>Kõik rakendused</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="843"/>
+        <location filename="../wingmenuwidget.cpp" line="848"/>
         <source>Name</source>
         <translation>Nimi</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="845"/>
+        <location filename="../wingmenuwidget.cpp" line="850"/>
         <source>Comment</source>
         <translation>Kommentaar</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="847"/>
+        <location filename="../wingmenuwidget.cpp" line="852"/>
         <source>File</source>
         <translation>Fail</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="848"/>
+        <location filename="../wingmenuwidget.cpp" line="853"/>
         <source>Category</source>
         <translation>Kategooria</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="849"/>
+        <location filename="../wingmenuwidget.cpp" line="854"/>
         <source>Exec</source>
         <translation>Käivitatav</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="1037"/>
+        <location filename="../wingmenuwidget.cpp" line="1042"/>
         <source>Failed to start the application</source>
         <translation>Rakenduse käivitamine ei õnnestunud</translation>
     </message>
     <message>
-        <location filename="../wingmenuwidget.cpp" line="1038"/>
+        <location filename="../wingmenuwidget.cpp" line="1043"/>
         <source>%1 is not a valid .desktop file</source>
         <translation>%1 pole korrektne .desktop fail</translation>
     </message>
