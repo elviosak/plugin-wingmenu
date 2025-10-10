@@ -294,22 +294,22 @@
 <context>
     <name>WingMenuPlugin</name>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="94"/>
+        <location filename="../wingmenuplugin.cpp" line="93"/>
         <source>Menu</source>
         <translation>Menu</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="137"/>
+        <location filename="../wingmenuplugin.cpp" line="136"/>
         <source>Show/hide main menu</source>
         <translation>Hoofdmenu tonen/verbergen</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="167"/>
+        <location filename="../wingmenuplugin.cpp" line="166"/>
         <source>Failed to Register D-Bus Object</source>
         <translation>Het D-Bus-object kan niet worden geregistreerd</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="155"/>
+        <location filename="../wingmenuplugin.cpp" line="154"/>
         <source>Failed to Register D-Bus Service</source>
         <translation>De D-Bus-dienst kan niet worden geregistreerd</translation>
     </message>
