@@ -50,7 +50,6 @@ WingMenuPlugin::WingMenuPlugin(const ILXQtPanelPluginStartupInfo& startupInfo)
 WingMenuPlugin::~WingMenuPlugin()
 {
     sCounter--;
-    qDebug() << "DESTRUCTOR" << sCounter << settings()->group();
     if (sCounter <= 0) {
         sConnection.unregisterService(SERVICE_NAME);
     }
