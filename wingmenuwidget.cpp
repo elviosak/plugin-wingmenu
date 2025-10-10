@@ -133,15 +133,20 @@ WingMenuWidget::WingMenuWidget(WingMenuPlugin* plugin, XdgMenu* xdgMenu, QWidget
 
 void WingMenuWidget::onShow()
 {
-    if (QAction* a = mCategoryGroup->actions().at(0)) {
-        if (!a->isChecked()) {
-            a->trigger();
+    if (mFavoritesList.count() == 0) {
+        mFavoritesInfo->show();
+        if (QAction* a = mCategoryGroup->actions().at(1)) {
+            if (!a->isChecked()) {
+                a->trigger();
+            }
         }
-        if (mFavoritesList.count() == 0) {
-            mFavoritesInfo->show();
-        }
-        else {
-            mFavoritesInfo->hide();
+    }
+    else {
+        mFavoritesInfo->hide();
+        if (QAction* a = mCategoryGroup->actions().at(0)) {
+            if (!a->isChecked()) {
+                a->trigger();
+            }
         }
     }
 }
