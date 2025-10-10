@@ -2,7 +2,9 @@
 
 It has two columns instead of the "classic menu" and was inspired by Xfce's [Whisker Menu](https://docs.xfce.org/panel-plugins/xfce4-whiskermenu-plugin/start)
 
-Can be activated via D-Bus `qdbus org.lxqt.panel.wingmenu /wingmenu toggle` or wingmenu2, wingmenu3, etc. Exact command is available in the Settings window.
+Can be activated via D-Bus `qdbus org.lxqt.panel.wingmenu /wingmenu toggle` (or wingmenu2, wingmenu3, etc). Exact command is available in the Settings window.
+
+NOTE: If the D-Bus command is set as a global shortcut, the menu might block the detection of the shortcut when it's open, so it might not work for hiding it (Esc always works for hiding it).
 
 License: [LGPL-2.1+](LICENSE "License")
 

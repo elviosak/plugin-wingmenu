@@ -6,9 +6,8 @@
 #include <pluginsettings.h>
 
 #include <QAction>
-#include <QDialog>
 #include <QDBusConnection>
-#include <QDBusServiceWatcher>
+#include <QDialog>
 #include <QKeyEvent>
 #include <QMenu>
 #include <QObject>
@@ -31,6 +30,9 @@ public:
     WingMenuPlugin(const ILXQtPanelPluginStartupInfo& startupInfo);
     ~WingMenuPlugin();
 
+    static int sCounter;
+    static QDBusConnection sConnection;
+
     virtual QWidget* widget() override { return mWidget; }
     virtual QString themeId() const override
     {
@@ -49,7 +51,8 @@ public:
     void hideMenu();
     const GlobalKeyShortcut::Action* shortcut() { return mShortcut; };
 public slots:
-    void toggle() { showHideMenuDelayed(); };
+    Q_SCRIPTABLE void toggle() { showHideMenuDelayed(); };
+
 private:
     QToolButton* mWidget;
     GlobalKeyShortcut::Action* mShortcut;
@@ -59,15 +62,15 @@ private:
     AppLayout::Layout mAppLayout;
     QString mMenuFile;
     XdgMenu* mXdgMenu;
-    QDBusServiceWatcher* watcher;
 
     bool mShowIcon;
     QString mIcon;
     bool mShowText;
     QString mText;
-    
+
     QString mDBusMessage;
     void registerService();
+    void registerObject();
 
     void settingsChanged() override;
     void setupShortcut();

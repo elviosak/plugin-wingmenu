@@ -2,12 +2,18 @@
 #include "wingmenuconfiguration.h"
 #include "wingmenuwidget.h"
 
+#include <QDBusConnectionInterface>
 #include <QIcon>
 #include <QMessageBox>
 #include <QTimer>
 #include <QWidgetAction>
 
 #include <lxqtglobalkeys.h>
+
+#define SERVICE_NAME QSL("org.lxqt.panel.wingmenu")
+
+int WingMenuPlugin::sCounter = 0;
+QDBusConnection WingMenuPlugin::sConnection = QDBusConnection::connectToBus(QDBusConnection::SessionBus, QSL("plugin-wingmenu"));
 
 WingMenuPlugin::WingMenuPlugin(const ILXQtPanelPluginStartupInfo& startupInfo)
     : QObject()
@@ -33,13 +39,21 @@ WingMenuPlugin::WingMenuPlugin(const ILXQtPanelPluginStartupInfo& startupInfo)
     // buildMenu();
     setupShortcut();
     connect(mXdgMenu, &XdgMenu::changed, this, &WingMenuPlugin::buildMenu);
-    QTimer::singleShot(0, this, &WingMenuPlugin::registerService);
+
+    sCounter++;
+    if (sCounter == 1) {
+        registerService();
+    }
+    registerObject();
 }
 
-WingMenuPlugin::~WingMenuPlugin() 
+WingMenuPlugin::~WingMenuPlugin()
 {
-    if (watcher)
-        watcher->deleteLater();
+    sCounter--;
+    qDebug() << "DESTRUCTOR" << sCounter << settings()->group();
+    if (sCounter <= 0) {
+        sConnection.unregisterService(SERVICE_NAME);
+    }
 }
 
 void WingMenuPlugin::buildMenu()
@@ -131,37 +145,28 @@ void WingMenuPlugin::setupShortcut()
 }
 
 void WingMenuPlugin::registerService()
-{   
-    if (sender()) {
-        qInfo() << "Existing service was unregistered, trying again";
-        disconnect(watcher, &QDBusServiceWatcher::serviceUnregistered, this, &WingMenuPlugin::registerService);
-        watcher->deleteLater();
-    }
-
-    auto pluginName = settings()->group();
-    auto serviceName = QSL("org.lxqt.panel.%1").arg(pluginName);
-    auto bus = QDBusConnection::sessionBus();
-    if (bus.registerService(serviceName)) {
-        // Register the object
-        qInfo() << "D-Bus Service" << serviceName << "registered succesfully.";
-        auto objectPath = QSL("/%1").arg(pluginName);
-        if (bus.registerObject(objectPath, this, QDBusConnection::QDBusConnection::ExportAllSlots)) {
-            qInfo() << "D-Bus Object" << objectPath <<"registered succesfully.";
-            mDBusMessage = QSL("qdbus %1 %2 toggle").arg(serviceName, objectPath);
-        }
-        else {
-            qInfo() << "D-Bus Object" << objectPath << "could not be registered.";
-            mDBusMessage = tr("Failed to Register D-Bus Object");
-        }
+{
+    auto reply = sConnection.interface()->registerService(SERVICE_NAME, QDBusConnectionInterface::DontQueueService, QDBusConnectionInterface::AllowReplacement);
+    if (reply.value() == QDBusConnectionInterface::ServiceRegistered) {
+        qInfo() << "D-Bus Service" << SERVICE_NAME << "registered succesfully.";
     }
     else {
-        qInfo() << "Service" << serviceName << "exists, will wait for it to unregister.";
+        qInfo() << "Service" << SERVICE_NAME << "exists, will wait for it to unregister.";
         mDBusMessage = tr("Failed to Register D-Bus Service");
-        watcher = new QDBusServiceWatcher(serviceName, bus);
-        connect(watcher, &QDBusServiceWatcher::serviceUnregistered, this, &WingMenuPlugin::registerService);
     }
 }
-
+void WingMenuPlugin::registerObject()
+{
+    auto objectPath = QSL("/%1").arg(settings()->group());
+    if (sConnection.registerObject(objectPath, this, QDBusConnection::QDBusConnection::ExportAllSlots)) {
+        qInfo() << "D-Bus Object" << objectPath << "registered succesfully.";
+        mDBusMessage = QSL("qdbus %1 %2 toggle").arg(SERVICE_NAME, objectPath);
+    }
+    else {
+        qInfo() << "D-Bus Object" << objectPath << "could not be registered.";
+        mDBusMessage = tr("Failed to Register D-Bus Object");
+    }
+}
 
 void WingMenuPlugin::showMenu()
 {
