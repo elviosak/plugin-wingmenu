@@ -304,12 +304,12 @@
         <translation>Zobrazit/skrýt hlavní nabídku</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="166"/>
+        <location filename="../wingmenuplugin.cpp" line="167"/>
         <source>Failed to Register D-Bus Object</source>
         <translation>Nepodařilo se zaregistrovat D-Bus objekt</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="154"/>
+        <location filename="../wingmenuplugin.cpp" line="155"/>
         <source>Failed to Register D-Bus Service</source>
         <translation>Nepodařilo se zaregistrovat D-Bus službu</translation>
     </message>

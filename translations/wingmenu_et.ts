@@ -304,12 +304,12 @@
         <translation>Näita või peida põhimenüü</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="166"/>
+        <location filename="../wingmenuplugin.cpp" line="167"/>
         <source>Failed to Register D-Bus Object</source>
         <translation>D-Busi objekti registreerimine ei õnnestunud</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="154"/>
+        <location filename="../wingmenuplugin.cpp" line="155"/>
         <source>Failed to Register D-Bus Service</source>
         <translation>D-Busi teenuse registreerimine ei õnnestunud</translation>
     </message>

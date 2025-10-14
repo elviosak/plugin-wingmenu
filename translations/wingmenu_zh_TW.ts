@@ -304,12 +304,12 @@
         <translation>顯示/隱藏主要選單</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="166"/>
+        <location filename="../wingmenuplugin.cpp" line="167"/>
         <source>Failed to Register D-Bus Object</source>
         <translation>註冊 D-Bus 事項失敗</translation>
     </message>
     <message>
-        <location filename="../wingmenuplugin.cpp" line="154"/>
+        <location filename="../wingmenuplugin.cpp" line="155"/>
         <source>Failed to Register D-Bus Service</source>
         <translation>註冊 D-Bus 服務失敗</translation>
     </message>
