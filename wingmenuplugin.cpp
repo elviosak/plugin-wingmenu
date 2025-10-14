@@ -138,7 +138,8 @@ void WingMenuPlugin::setupShortcut()
         connect(mShortcut, &GlobalKeyShortcut::Action::registrationFinished, this, [this] {
             if (mShortcut->shortcut().isEmpty()){
                 mShortcut->changeShortcut(DEFAULT_SHORTCUT);
-} });
+            }
+        });
         connect(mShortcut, &GlobalKeyShortcut::Action::activated, this, [this] { showHideMenu(); });
     }
 }
@@ -172,8 +173,9 @@ void WingMenuPlugin::showMenu()
     if (!mMenu) {
         buildMenu();
     }
+    mMenu->setGeometry(calculatePopupWindowPos(mMenu->sizeHint()));
     willShowWindow(mMenu);
-    mMenu->popup(calculatePopupWindowPos(mMenu->sizeHint()).topLeft());
+    mMenu->show();
     mMenuWidget->focusLineEdit();
 }
 
