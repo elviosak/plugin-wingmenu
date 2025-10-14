@@ -41,6 +41,9 @@ find_package(lxqt-globalkeys-ui ${LXQT_GLOBALKEYS_MINIMUM_VERSION} REQUIRED)
 find_package(Qt6Xdg REQUIRED)
 # find_package(lxqt-panel ${LXQT_MINIMUM_VERSION} REQUIRED)
 
+if (Qt6Gui_VERSION VERSION_GREATER_EQUAL "6.10.0")
+    find_package(Qt6GuiPrivate REQUIRED)
+endif()
 # Patch Version
 # set(LXQT_PANEL_PATCH_VERSION 0)
 # set(LXQT_PANEL_VERSION ${LXQT_MAJOR_VERSION}.${LXQT_MINOR_VERSION}.${LXQT_PANEL_PATCH_VERSION})
