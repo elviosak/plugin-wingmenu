@@ -189,16 +189,10 @@ bool WingMenuWidget::eventFilter(QObject* watched, QEvent* event)
     if (nullptr != view && event->type() == QEvent::MouseButtonRelease) {
         auto mouseEvent = static_cast<QMouseEvent*>(event);
         if (mouseEvent->button() == Qt::RightButton) {
-            bool isFavorites = view == mFavoritesView;
-            QPoint pos = mouseEvent->pos();
-            QModelIndex index = isFavorites ? mFavoritesView->indexAt(pos) : mApplicationsView->indexAt(pos);
-            if (index.isValid()) {
-                showCustomMenu(pos);
-                return true;
-            }
+            QPoint globalPos = mouseEvent->globalPosition().toPoint();
+            showCustomMenu(globalPos);
         }
     }
-
     return false;
 }
 
@@ -463,16 +457,16 @@ void WingMenuWidget::sendKeyToApplicationsList(Qt::Key key)
     }
 }
 
-void WingMenuWidget::showCustomMenu(const QPoint& pos)
+void WingMenuWidget::showCustomMenu(const QPoint& globalPos)
 {
     QModelIndex index;
     // bool isFavorites = sender() == mFavoritesView;
     bool isFavorites = mApplicationsStack->currentWidget() == mFavoritesView;
     if (isFavorites) {
-        index = mFavoritesView->indexAt(mFavoritesView->mapFrom(mFavoritesView, pos));
+        index = mFavoritesView->indexAt(mFavoritesView->mapFromGlobal(globalPos));
     }
     else {
-        index = mApplicationsView->indexAt(mApplicationsView->mapFrom(mApplicationsView, pos));
+        index = mApplicationsView->indexAt(mApplicationsView->mapFromGlobal(globalPos));
     }
 
     if (!index.isValid()) {
@@ -489,6 +483,11 @@ void WingMenuWidget::showCustomMenu(const QPoint& pos)
     QIcon icon;
     QString text;
     QAction* a;
+    {
+        a = menu->addAction(df.icon(), df.name());
+        a->setEnabled(false);
+        menu->addSeparator();
+    }
     if (isFavorites == false) {
         icon = XdgIcon::fromTheme(QSL("favorites"));
         text = tr("Add to Favorites");
@@ -576,8 +575,8 @@ void WingMenuWidget::showCustomMenu(const QPoint& pos)
                 removeFromFavorites(index);
             });
     }
-    QPoint globalPos = isFavorites ? mFavoritesView->mapToGlobal(pos) : mApplicationsView->mapToGlobal(pos);
-    menu->exec(globalPos);
+    menu->setGeometry(QRect(globalPos, menu->sizeHint()));
+    menu->show();
 }
 
 void WingMenuWidget::buildMenu()
