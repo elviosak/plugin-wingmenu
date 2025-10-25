@@ -216,6 +216,10 @@ void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent)
         }
         keyEvent->accept();
     }
+    else if (k == Qt::Key_Escape || (k >= Qt::Key_F1 && k <= Qt::Key_F35)) {
+        mPlugin->hideMenu();
+        keyEvent->accept();
+    }
     else if (!keyEvent->text().isEmpty()) {
         mSearchEdit->setFocus();
         mSearchEdit->event(keyEvent);
@@ -353,10 +357,6 @@ void WingMenuWidget::keyPressEvent(QKeyEvent* keyEvent)
                 mSearchEdit->setFocus();
             }
         }
-        keyEvent->accept();
-    }
-    else if (k == Qt::Key_Escape || (k >= Qt::Key_F1 && k <= Qt::Key_F35)) {
-        mPlugin->hideMenu();
         keyEvent->accept();
     }
     else {
