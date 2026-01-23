@@ -32,7 +32,7 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="86"/>
         <source>Show text:</source>
-        <translation type="unfinished">Näytä infoteksti:</translation>
+        <translation>Näytä infoteksti:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="99"/>
