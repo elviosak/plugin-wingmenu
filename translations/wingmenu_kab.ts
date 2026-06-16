@@ -6,7 +6,7 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="17"/>
         <source>WingMenu settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Iɣewwaren n WingMenu</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="30"/>
@@ -52,7 +52,7 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="144"/>
         <source>Keyboard Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Anegzum n unasiw</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="163"/>
