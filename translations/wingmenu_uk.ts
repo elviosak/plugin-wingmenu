@@ -6,58 +6,58 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="17"/>
         <source>WingMenu settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Налаштування WingMenu</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="30"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Загальні</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="36"/>
         <source>Panel Button</source>
-        <translation type="unfinished"></translation>
+        <translation>Кнопка панелі</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="45"/>
         <source>Show icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати піктограму:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="73"/>
         <location filename="../wingmenuconfiguration.ui" line="115"/>
         <source>Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>Огляд</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="86"/>
         <source>Show text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати текст:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="99"/>
         <source>Menu file</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл меню</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="105"/>
         <source>File:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="128"/>
         <source>D-Bus Activation</source>
-        <translation type="unfinished"></translation>
+        <translation>Активація D-Bus</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="144"/>
         <source>Keyboard Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Комбінація клавіш</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="163"/>
         <source>Click the button to record shortcut:</source>
-        <translation type="unfinished"></translation>
+        <translation>Клацніть кнопку, щоб записати комбінацію клавіш:</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="191"/>
@@ -67,17 +67,17 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="197"/>
         <source>Categories on the Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Категорії ліворуч</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="204"/>
         <source>Search on Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Пошук унизу</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="211"/>
         <source>Sidebar on the Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Бічна панель ліворуч</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="218"/>
@@ -92,22 +92,22 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="233"/>
         <source>List (Name and Description)</source>
-        <translation type="unfinished"></translation>
+        <translation>Список (назва і опис)</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="238"/>
         <source>List (Name only)</source>
-        <translation type="unfinished"></translation>
+        <translation>Список (лише назва)</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="243"/>
         <source>Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Піктограми</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="254"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>Інше</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="260"/>
@@ -117,12 +117,12 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="267"/>
         <source> ms</source>
-        <translation type="unfinished"></translation>
+        <translation> мс</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="270"/>
         <source>Delay: </source>
-        <translation type="unfinished"></translation>
+        <translation>Затримка: </translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="289"/>
@@ -142,7 +142,7 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="334"/>
         <source>Load from menu file</source>
-        <translation type="unfinished"></translation>
+        <translation>Завантажити з файлу меню</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="341"/>
@@ -157,12 +157,12 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="408"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Нове</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="418"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Змінити</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.ui" line="444"/>
@@ -177,22 +177,22 @@
     <message>
         <location filename="../wingmenuconfiguration.ui" line="480"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Вилучити</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="44"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Скинути</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="62"/>
         <source>Choose Icon File</source>
-        <translation type="unfinished"></translation>
+        <translation>Обрати файл піктограми</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="64"/>
         <source>Images (*.png *.xpm *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Зображення (*.png *.xpm *.svg)</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="160"/>
@@ -203,57 +203,57 @@
         <location filename="../wingmenuconfiguration.cpp" line="187"/>
         <location filename="../wingmenuconfiguration.cpp" line="222"/>
         <source>No item selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Елементів не вибрано</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="187"/>
         <source>Please select an item to edit.</source>
-        <translation type="unfinished"></translation>
+        <translation>Виберіть елемент для редагування.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="222"/>
         <source>Please select an item to remove.</source>
-        <translation type="unfinished"></translation>
+        <translation>Виберіть елемент для вилучення.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="230"/>
         <source>Edit Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати дію</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="248"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Назва</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="249"/>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Піктограма</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="250"/>
         <source>Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Команда</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="274"/>
         <source>&quot;Command&quot; field is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Поле «Команда» порожнє.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="268"/>
         <source>&quot;Name&quot; field is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Поле «Назва» порожнє.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="40"/>
         <source>Files are stored in: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Файли розміщені в: %1</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="162"/>
         <source>All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Усі файли (*)</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="170"/>
@@ -263,32 +263,32 @@
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="170"/>
         <source>Selected file: %1 is invalid.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вибраний файл: %1 недійсний.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="271"/>
         <source>&quot;Icon&quot; field is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Поле «Піктограма» порожнє.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="276"/>
         <source>Please fill all fields.</source>
-        <translation type="unfinished"></translation>
+        <translation>Заповніть усі поля.</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="327"/>
         <source>Choose Menu File</source>
-        <translation type="unfinished"></translation>
+        <translation>Оберіть файл меню</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="329"/>
         <source>Menu files (*.menu)</source>
-        <translation type="unfinished"></translation>
+        <translation>Файли меню (*.menu)</translation>
     </message>
     <message>
         <location filename="../wingmenuconfiguration.cpp" line="358"/>
         <source>Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Меню</translation>
     </message>
 </context>
 <context>
@@ -296,22 +296,22 @@
     <message>
         <location filename="../wingmenuplugin.cpp" line="93"/>
         <source>Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Меню</translation>
     </message>
     <message>
         <location filename="../wingmenuplugin.cpp" line="136"/>
         <source>Show/hide main menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати/сховати головне меню</translation>
     </message>
     <message>
         <location filename="../wingmenuplugin.cpp" line="167"/>
         <source>Failed to Register D-Bus Object</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося зареєструвати об&apos;єкт D-Bus</translation>
     </message>
     <message>
         <location filename="../wingmenuplugin.cpp" line="155"/>
         <source>Failed to Register D-Bus Service</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося зареєструвати службу D-Bus</translation>
     </message>
 </context>
 <context>
@@ -324,17 +324,17 @@
     <message>
         <location filename="../wingmenuwidget.cpp" line="87"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Пошук...</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="545"/>
         <source>Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Перемістити вище</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="555"/>
         <source>Move Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Перемістити нижче</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="566"/>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../wingmenuwidget.cpp" line="570"/>
         <source>Confirm removal</source>
-        <translation type="unfinished"></translation>
+        <translation>Підтвердьте вилучення</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="570"/>
@@ -367,28 +367,29 @@ from Favorites?
     <message>
         <location filename="../wingmenuwidget.cpp" line="524"/>
         <source>Question</source>
-        <translation type="unfinished"></translation>
+        <translation>Запитання</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="524"/>
         <source>A file with the same name already exists.
 Do you want to overwrite it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл із такою ж назвою вже існує.
+Бажаєте його перезаписати?</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="529"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Попередження</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="529"/>
         <source>The file cannot be overwritten.</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл не можна перезаписати.</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="534"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Копіювати</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="604"/>
@@ -398,42 +399,42 @@ Do you want to overwrite it?</source>
     <message>
         <location filename="../wingmenuwidget.cpp" line="614"/>
         <source>All Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Усі застосунки</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="848"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Назва</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="850"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Коментар</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="852"/>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="853"/>
         <source>Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Категорія</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="854"/>
         <source>Exec</source>
-        <translation type="unfinished"></translation>
+        <translation>Виконуваний</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="1042"/>
         <source>Failed to start the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося запустити застосунок</translation>
     </message>
     <message>
         <location filename="../wingmenuwidget.cpp" line="1043"/>
         <source>%1 is not a valid .desktop file</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 — це недійсний файл .desktop</translation>
     </message>
 </context>
 </TS>
