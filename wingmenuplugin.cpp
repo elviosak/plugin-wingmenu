@@ -160,7 +160,7 @@ void WingMenuPlugin::registerObject()
     auto objectPath = QSL("/%1").arg(settings()->group());
     if (sConnection.registerObject(objectPath, this, QDBusConnection::QDBusConnection::ExportAllSlots)) {
         qInfo() << "D-Bus Object" << objectPath << "registered succesfully.";
-        mDBusMessage = QSL("qdbus %1 %2 toggle").arg(SERVICE_NAME, objectPath);
+        mDBusMessage = QSL("qdbus6 %1 %2 toggle").arg(SERVICE_NAME, objectPath);
     }
     else {
         qInfo() << "D-Bus Object" << objectPath << "could not be registered.";
